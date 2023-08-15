@@ -2,8 +2,6 @@
   display: flex;
   align-items: center;
   padding-top: 40px;
-  margin-top: 159px;
-  margin-bottom: 938px;
   width: 100%;
   margin: 0 auto;
   max-width: 880px;
@@ -13,7 +11,7 @@
   width: 120px;
   border-radius: 50%;
   object-fit: cover;
-  background-position: center;
+  object-position: 50% 50%;
   margin-right: 24px;
 }
 
@@ -25,6 +23,10 @@
   font-weight: 500;
   line-height: 48px; /* 114.286% */
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 373px;
 }
 
 .profile__description {
@@ -62,16 +64,84 @@
 }
 
 .profile__edit-button:hover {
-  opacity: 50%;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .profile__add-button {
   background: transparent url(../images/plus-sign.svg) center no-repeat;
+  background-size: 24px;
   width: 150px;
   height: 50px;
   margin-left: auto;
-  border-color: #fff;
   opacity: 100%;
+  border-radius: 2px;
+  border: 2px solid #fff;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) and (min-width: 471px) {
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .profile__description {
+    width: 100%;
+  }
+
+  .profile__add-button {
+    width: calc(150px / 1.5);
+  }
+}
+
+@media only screen and (max-width: 471px) and (min-width: 0px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__pic {
+    margin-right: 0;
+  }
+
+  .profile__info {
+    grid-template-columns: none;
+    grid-gap: 10px 14px;
+    justify-items: center;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .profile__title {
+    font-size: 22px;
+    line-height: normal;
+    text-align: center;
+    margin: 26.25px 0 0 0;
+  }
+
+  .profile__description {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  .profile__add-button {
+    margin: 36px 0 0 0;
+    width: 90%;
+    background-size: 16px;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    background-size: 18px 18px;
+  }
 }
 
 .profile__add-button:hover {
