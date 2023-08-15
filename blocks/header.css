@@ -1,0 +1,14 @@
+.header__logo {
+  margin-top: 45px;
+  margin-bottom: 41px;
+  max-width: 173px;
+  max-height: 33px;
+  object-fit: contain;
+}
+
+.header__line {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
