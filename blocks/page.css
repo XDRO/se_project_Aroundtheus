@@ -14,3 +14,9 @@
   width: 100%;
   margin: 0 auto;
 }
+
+@media only screen and (max-width: 800px) and (min-width: 471px) {
+  .page__content {
+    margin: 5%;
+  }
+}
