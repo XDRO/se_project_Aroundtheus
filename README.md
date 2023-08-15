@@ -33,4 +33,4 @@ Screen shots -
 ![Screenshot 2023-08-11 160024](https://github.com/XDRO/se_project_aroundtheus/assets/131299160/9cbd016f-153b-43f0-b405-31848e7d1d0f)
 )
 
-[Git hub link](https://github.com/XDRO/se_project_aroundtheus/blob/main/se_project_aroundtheus/README.md)
+[Git hub link](https://xdro.github.io/se_project_aroundtheus/)
