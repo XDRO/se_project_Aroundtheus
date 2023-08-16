@@ -8,6 +8,10 @@
   line-height: normal;
 }
 
+.footer__text {
+  margin: 0;
+}
+
 @media only screen and (max-width: 800px) and (min-width: 471px) {
   .footer {
     width: 80%;
@@ -20,5 +24,6 @@
     width: 100%;
     max-width: 282px;
     font-size: 14px;
+    margin: 48px 19px 36px 19px;
   }
 }
