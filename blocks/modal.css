@@ -1,0 +1,147 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  padding-left: 19px;
+  padding-right: 19px;
+}
+
+.modal__opened {
+  display: flex;
+}
+
+.modal__close {
+  background-image: url("../images/X-button.svg");
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+}
+
+.modal__close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.modal__container {
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  padding: 34px 36px 37px 36px;
+  border-radius: 10px;
+  max-height: 330px;
+  max-width: 430px;
+}
+
+.modal__heading {
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  margin-bottom: 54px;
+  margin-top: 0;
+  height: 23px;
+  max-width: 330px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 358px;
+  margin: auto;
+}
+
+.modal__button {
+  margin-top: 18px;
+  height: 50px;
+  width: 358px;
+  border-radius: 2px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: none;
+}
+
+.modal__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  background: #000;
+}
+
+.modal__button-text {
+  height: 18px;
+  max-width: 109px;
+  flex-shrink: 0;
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 13px 0 18px 0;
+}
+
+.modal__input {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  height: 28px;
+  max-width: 358px;
+  margin-bottom: 30px;
+  padding-bottom: 14px;
+}
+
+.modal__input::-webkit-input-placeholder {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media only screen and (max-width: 471px) and (min-width: 0) {
+  .modal__container {
+    max-width: 282px;
+    max-height: 322px;
+    padding: 25px 22px 25px 22px;
+  }
+
+  .modal__heading {
+    margin-bottom: 75px;
+  }
+
+  .modal__close {
+    left: calc(100% - 25px);
+    margin-bottom: 14px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .modal__button {
+    max-width: 238px;
+    height: 46px;
+    margin-top: 15px;
+  }
+
+  .modal__button-text {
+    max-width: 38px;
+    font-size: 14px;
+    margin: 14px 0 14px 0;
+  }
+}
