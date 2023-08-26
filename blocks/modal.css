@@ -8,9 +8,6 @@
   z-index: 999;
   padding-left: 19px;
   padding-right: 19px;
-}
-
-.modal__opened {
   display: flex;
 }
 
