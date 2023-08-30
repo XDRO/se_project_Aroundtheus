@@ -71,7 +71,9 @@ initialCards.forEach((cardData) => {
   const cardElement = cardTemplate.cloneNode(true);
   //access the card title and image and store them in variables
   const cardImageEl = cardElement.querySelector(".card__image");
-  const cardDescriptionTextEl = cardElement.querySelector(".card__title");
+  const cardDescriptionTextEl = cardElement.querySelector(
+    ".card__description-text"
+  );
   //set the path to the image to the link field of the object
 
   //set the image alt text to the name field of the object
@@ -80,5 +82,3 @@ initialCards.forEach((cardData) => {
   //return the ready HTML element with the filled-in data
   // return cardElement;
 });
-
-
