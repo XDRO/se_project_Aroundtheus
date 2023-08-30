@@ -58,7 +58,7 @@ function getCardElement(cardData) {
     ".card__description-text"
   );
   //set the path to the image to the link field of the object
-  cardImageEl.content = cardData.link;
+  cardImageEl.src = cardData.link;
   //set the image alt text to the name field of the object
   //set the card title to the name field of the object, too
   cardDescriptionTextEl.textContent = cardData.name;
@@ -92,5 +92,5 @@ initialCards.forEach((cardData) => {
 
 initialCards.forEach((cardLink) => {
   const cardElement = getCardElement(cardLink);
-  cardImageEl.append(cardElement);
+  cardElement.append(cardImageEl);
 });
