@@ -8,6 +8,11 @@
   object-fit: ; */
 }
 
+.card__image {
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+}
+
 .card__description {
   display: flex;
   background-color: white;
