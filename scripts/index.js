@@ -2,26 +2,32 @@ const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    alt: "Yosemite Valley",
   },
   {
     name: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    alt: "Lake Lousie",
   },
   {
     name: "Bald Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    alt: "Bald Mountains",
   },
   {
     name: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    alt: "Latemar",
   },
   {
     name: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    alt: "Vanoise National Park",
   },
   {
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg ",
+    alt: "Lago di Braies",
   },
 ];
 
@@ -41,6 +47,7 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 const cardImageEl = document.querySelector(".card__image");
+const cardAltEl = document.querySelector(".card__image");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
@@ -57,9 +64,11 @@ function getCardElement(cardData) {
   const cardDescriptionTextEl = cardElement.querySelector(
     ".card__description-text"
   );
+  const cardAltEl = cardElement.querySelector(".card__image");
   //set the path to the image to the link field of the object
   cardImageEl.src = cardData.link;
   //set the image alt text to the name field of the object
+  cardAltEl.alt = cardData.alt;
   //set the card title to the name field of the object, too
   cardDescriptionTextEl.textContent = cardData.name;
   //return the ready HTML element with the filled-in data
@@ -93,4 +102,9 @@ initialCards.forEach((cardData) => {
 initialCards.forEach((cardLink) => {
   const cardElement = getCardElement(cardLink);
   cardElement.append(cardImageEl);
+});
+
+initialCards.forEach((cardAlt) => {
+  const cardElement = getCardElement(cardAlt);
+  cardElement.append(cardAltEl);
 });
