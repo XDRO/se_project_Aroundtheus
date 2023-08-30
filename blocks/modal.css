@@ -11,6 +11,10 @@
   display: flex;
 }
 
+.modal__opened {
+  display: flex;
+}
+
 .modal__close {
   background-image: url("../images/X-button.svg");
   border: none;
