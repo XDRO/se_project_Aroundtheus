@@ -77,7 +77,10 @@ function getCardElement(cardData) {
   );
   const likeButton = cardElement.querySelector(".card__like-button");
   // find trash button
-
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
+  cardDeleteButton.addEventListener("click", () => {
+    cardElement.remove("card__delete-button");
+  });
   // add event listener to the trash button
   // cardElement.remove();
 
