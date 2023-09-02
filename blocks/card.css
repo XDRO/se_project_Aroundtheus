@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  position: relative;
 }
 
 .card__image {
@@ -52,7 +53,8 @@
   width: 18px;
   height: 19px;
   position: absolute;
-  margin: 18px 15px 600px 230px;
+  top: 5%;
+  right: 5%;
   border-style: none;
   opacity: 100%;
 }
