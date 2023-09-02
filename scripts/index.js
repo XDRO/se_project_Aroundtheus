@@ -75,12 +75,24 @@ function getCardElement(cardData) {
   const cardDescriptionTextEl = cardElement.querySelector(
     ".card__description-text"
   );
+  const likeButton = cardElement.querySelector(".card__like-button");
+  // find trash button
+
+  // add event listener to the trash button
+  // cardElement.remove();
+
+  // add click listener to cardImage element
+  // openModal with the previewImageModal
+
+  // make modals open smoothly use visibility hidden
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.alt;
   cardDescriptionTextEl.textContent = cardData.name;
 
-  addCardModalTitleInput.textContent = cardData.name;
-  addCardModalLinkInput.src = cardData.link;
   return cardElement;
 }
 
@@ -131,9 +143,5 @@ initialCards.forEach((cardData) => {
   cardListEl.prepend(cardElement);
 });
 
-const likeButtons = document.querySelectorAll("#like-buttons");
-likeButtons.forEach((likeButton) => {
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle(".card__like-button_active");
-  });
-});
+const likeButtons = document.querySelectorAll(".card__like-button");
+likeButtons.forEach((likeButton) => {});
