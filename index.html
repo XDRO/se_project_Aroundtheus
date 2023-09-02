@@ -34,7 +34,11 @@
             ></button>
             <h2 class="profile__description">Explorer</h2>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            id="profile-add-button"
+            type="button"
+          ></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list"></ul>
@@ -44,12 +48,12 @@
         </footer>
       </main>
     </div>
-
+    <!-- Edit Modal -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="profile-close-modal"></button>
         <p class="modal__heading">Edit profile</p>
-        <form action="#" class="modal__form">
+        <form action="#" class="modal__form" id="edit-card-form">
           <input
             class="modal__input"
             type="text"
@@ -63,6 +67,32 @@
             name="profile-description"
             id="profile-description-input"
             placeholder="Profile Description"
+          />
+          <button class="modal__button">
+            <span class="modal__button-text">Save</span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Add Card Modal -->
+    <div class="modal" id="profile-add-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="profile-close-modal"></button>
+        <p class="modal__heading">New Place</p>
+        <form action="#" class="modal__form" id="add-card-form">
+          <input
+            class="modal__input modal__input_type_title"
+            type="text"
+            name="title"
+            id="profile-title-input"
+            placeholder="Title"
+          />
+          <input
+            class="modal__input modal__input_type_url"
+            type="text"
+            name="url"
+            id="profile-description-input"
+            placeholder="Image URL"
           />
           <button class="modal__button">
             <span class="modal__button-text">Save</span>
