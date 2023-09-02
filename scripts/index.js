@@ -50,9 +50,11 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileEditModal.querySelector("#edit-card-form");
 
 const profileAddForm = profileAddModal.querySelector("#add-card-form");
-const pictureTitleInput = document.querySelector("#picture-title-input");
-const pictureDescriptionInput = document.querySelector(
-  "#picture-description-input"
+const addCardModalTitleInput = document.querySelector(
+  "#add-card-modal-title-input"
+);
+const addCardModalLinkInput = document.querySelector(
+  "#add-card-modal-link-input"
 );
 
 const cardListEl = document.querySelector(".cards__list");
@@ -60,6 +62,7 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 const profileAddButton = document.querySelector("#profile-add-button");
+
 // functions
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
@@ -75,6 +78,9 @@ function getCardElement(cardData) {
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.alt;
   cardDescriptionTextEl.textContent = cardData.name;
+
+  addCardModalTitleInput.textContent = cardData.name;
+  addCardModalLinkInput.src = cardData.link;
   return cardElement;
 }
 
@@ -88,12 +94,13 @@ function handleProfileEditSubmit(e) {
 }
 
 function handleProfileAddSubmit(e) {
-  const cardData = {
-    name: pictureTitleInput.value,
-    link: pictureDescriptionInput.value,
-  };
-
   e.preventDefault();
+  const cardData = {
+    name: addCardModalTitleInput.value,
+    link: addCardModalLinkInput.value,
+  };
+  const card = getCardElement(cardData);
+  cardListEl.prepend(card);
   closePopup();
 }
 
@@ -121,5 +128,12 @@ profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
-  cardListEl.append(cardElement);
+  cardListEl.prepend(cardElement);
+});
+
+const likeButtons = document.querySelectorAll("#like-buttons");
+likeButtons.forEach((likeButton) => {
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle(".card__like-button_active");
+  });
 });
