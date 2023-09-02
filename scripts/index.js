@@ -51,8 +51,10 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileEditModal.querySelector("#edit-card-form");
 
 const profileAddForm = profileAddModal.querySelector("#add-card-form");
-const PictureTitleInput = document.querySelector("#picture-title-input");
-const PictureDescriptionInput = document.querySelector(
+const pictureTitle = document.querySelector(".picture__title");
+const pictureDescription = document.querySelector(".picture__description");
+const pictureTitleInput = document.querySelector("#picture-title-input");
+const pictureDescriptionInput = document.querySelector(
   "#picture-description-input"
 );
 
