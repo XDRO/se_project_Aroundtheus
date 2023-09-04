@@ -8,12 +8,14 @@
   margin: 90px auto 90px auto;
 }
 
-@media only screen and (max-width: 471) {
+@media only screen and (max-width: 471px) and (min-width: 0) {
   .preview__image-card {
     width: 240px;
     height: 299px;
   }
 
   .preview__modal-container {
+    margin: 136px auto 133px auto;
+    background-color: transparent;
   }
 }
