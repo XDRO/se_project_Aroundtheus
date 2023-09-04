@@ -102,6 +102,7 @@ function getCardElement(cardData) {
     previewImageCard.alt = cardData.alt;
     previewImageDescription.textContent = cardData.name;
     previewImageModal.classList.add("modal_opened");
+    previewImageModal.classList.add("preview__image-transition");
   });
 
   // add click listener to cardImage element
