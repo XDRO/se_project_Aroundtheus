@@ -94,6 +94,9 @@ function getCardElement(cardData) {
   // add event listener to the trash button
   // cardElement.remove();
   cardImageEl.addEventListener("click", () => {
+    const previewImageCard = document.querySelector(".preview__image-card");
+    previewImageCard.src = cardData.link;
+    previewImageCard.alt = cardData.alt;
     previewImageModal.classList.add("modal_opened");
   });
 
