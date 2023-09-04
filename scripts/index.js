@@ -41,6 +41,11 @@ const profileEditCloseButton = profileEditModal.querySelector(
 const profileAddCloseButton = profileAddModal.querySelector(
   "#profile-close-modal"
 );
+const previewImageModal = document.querySelector("#preview-image-modal");
+const previewImageCloseModal = previewImageModal.querySelector(
+  "#preview-image-close-modal"
+);
+
 const profileTitle = document.querySelector(".profile__title");
 const profileDesciption = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -67,6 +72,11 @@ const profileAddButton = document.querySelector("#profile-add-button");
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
   profileAddModal.classList.remove("modal_opened");
+  previewImageModal.classList.remove("modal_opened");
+}
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -83,6 +93,9 @@ function getCardElement(cardData) {
   });
   // add event listener to the trash button
   // cardElement.remove();
+  cardImageEl.addEventListener("click", () => {
+    previewImageModal.classList.add("modal_opened");
+  });
 
   // add click listener to cardImage element
   // openModal with the previewImageModal
@@ -103,7 +116,7 @@ function getCardElement(cardData) {
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
-  profileTitle.textContent = profileDescriptionInput.value;
+  profileTitle.textContent = profileTitleInput.value;
   profileDesciption.textContent = profileDescriptionInput.value;
   closePopup();
 }
@@ -137,6 +150,7 @@ profileAddCloseButton.addEventListener("click", () => {
 
 profileEditCloseButton.addEventListener("click", closePopup);
 profileAddCloseButton.addEventListener("click", closePopup);
+previewImageCloseModal.addEventListener("click", closePopup);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileAddForm.addEventListener("submit", handleProfileAddSubmit);
@@ -145,6 +159,3 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 });
-
-const likeButtons = document.querySelectorAll(".card__like-button");
-likeButtons.forEach((likeButton) => {});
