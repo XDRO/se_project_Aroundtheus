@@ -122,7 +122,7 @@
   margin: 90px auto 90px auto;
 }
 
-.modal__preview-image_description {
+.modal__preview-description {
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -182,8 +182,8 @@
     background-color: transparent;
   }
 
-  .modal__preview-image_close {
-    bottom: calc(100% + -7px);
-    left: calc(100% + 8px);
+  .modal__preview-close {
+    bottom: calc(100% + -30px);
+    left: calc(100% + -15px);
   }
 }
