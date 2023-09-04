@@ -95,8 +95,12 @@ function getCardElement(cardData) {
   // cardElement.remove();
   cardImageEl.addEventListener("click", () => {
     const previewImageCard = document.querySelector(".preview__image-card");
+    const previewImageDescription = document.querySelector(
+      ".preview__image-description"
+    );
     previewImageCard.src = cardData.link;
     previewImageCard.alt = cardData.alt;
+    previewImageDescription.textContent = cardData.name;
     previewImageModal.classList.add("modal_opened");
   });
 
