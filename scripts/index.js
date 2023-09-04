@@ -92,7 +92,7 @@ function getCardElement(cardData) {
   cardImageEl.addEventListener("click", () => {
     const previewImageCard = document.querySelector(".modal__preview-image");
     const previewImageDescription = document.querySelector(
-      ".modal__preview-image_description"
+      ".modal__preview-description"
     );
     previewImageCard.src = cardData.link;
     previewImageCard.alt = cardData.alt;
