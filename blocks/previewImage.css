@@ -1,0 +1,19 @@
+.preview__image-card {
+  width: 433px;
+  height: 540px;
+}
+
+.preview__modal-container {
+  padding: 0;
+  margin: 90px auto 90px auto;
+}
+
+@media only screen and (max-width: 471) {
+  .preview__image-card {
+    width: 240px;
+    height: 299px;
+  }
+
+  .preview__modal-container {
+  }
+}
