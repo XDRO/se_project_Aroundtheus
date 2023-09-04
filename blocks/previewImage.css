@@ -8,6 +8,15 @@
   margin: 90px auto 90px auto;
 }
 
+.preview__image-description {
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 7px 0 0 0;
+}
+
 @media only screen and (max-width: 471px) and (min-width: 0) {
   .preview__image-card {
     width: 240px;
@@ -17,5 +26,10 @@
   .preview__modal-container {
     margin: 136px auto 133px auto;
     background-color: transparent;
+  }
+
+  .preview__image-close_modal {
+    bottom: calc(100% + -7px);
+    left: calc(100% + 8px);
   }
 }
