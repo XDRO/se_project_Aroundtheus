@@ -112,6 +112,25 @@
   padding-bottom: 14px;
 }
 
+.modal__preview-image {
+  width: 433px;
+  height: 540px;
+}
+
+.modal__preview-container {
+  padding: 0;
+  margin: 90px auto 90px auto;
+}
+
+.modal__preview-image_description {
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 7px 0 0 0;
+}
+
 .modal__input::-webkit-input-placeholder {
   color: #000;
   font-family: Inter;
@@ -149,5 +168,22 @@
     max-width: 38px;
     font-size: 14px;
     margin: 14px 0 14px 0;
+  }
+}
+
+@media only screen and (max-width: 471px) and (min-width: 0) {
+  .modal__preview-image {
+    width: 240px;
+    height: 299px;
+  }
+
+  .modal__preview-container {
+    margin: 136px auto 133px auto;
+    background-color: transparent;
+  }
+
+  .modal__preview-image_close {
+    bottom: calc(100% + -7px);
+    left: calc(100% + 8px);
   }
 }
