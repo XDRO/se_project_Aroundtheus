@@ -122,6 +122,7 @@ function handleProfileAddSubmit(e) {
   const card = getCardElement(cardData);
   cardListEl.prepend(card);
   closePopup();
+  profileAddForm.reset();
 }
 
 //event listeners
