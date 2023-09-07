@@ -64,7 +64,10 @@
             maxlength="40"
             required
           />
-          <span class="modal__error" id="profile-title-input-error">error</span>
+          <span
+            class="modal__error-input_title"
+            id="profile-title-input-error"
+          ></span>
           <input
             class="modal__input"
             type="text"
@@ -75,10 +78,15 @@
             maxlength="200"
             required
           />
-          <span class="modal__error profile-description-input-error"
-            >error</span
+          <span
+            class="modal__error-input_description"
+            id="profile-description-input-error"
+          ></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
           >
-          <button class="modal__button" type="submit">
             <span class="modal__button-text">Save</span>
           </button>
         </form>
@@ -96,7 +104,10 @@
             name="title"
             id="add-card-modal-title-input"
             placeholder="Title"
+            maxlength="30"
+            minlength="1"
           />
+          <span class="modal__error-input_title"></span>
           <input
             class="modal__input modal__input_type_url"
             type="text"
@@ -104,7 +115,12 @@
             id="add-card-modal-link-input"
             placeholder="Image URL"
           />
-          <button class="modal__button" type="submit">
+          <span class="modal__error-input_description"></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
             <span class="modal__button-text">Save</span>
           </button>
         </form>
