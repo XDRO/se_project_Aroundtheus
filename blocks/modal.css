@@ -112,6 +112,10 @@
   padding-bottom: 14px;
 }
 
+.modal__input:invalid {
+  border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+}
+
 .modal__preview-image {
   width: 433px;
   height: 540px;
