@@ -140,13 +140,31 @@
   line-height: normal;
 }
 
-.modal__error {
+.modal__error-input_title {
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
   position: absolute;
   top: 45%;
   transition: opacity 0.3s;
+}
+
+.modal__error-input_description {
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  position: absolute;
+  top: 65%;
+  transition: opacity 0.3s;
+}
+
+.modal__button_disabled {
+  opacity: 0.2;
+}
+
+.modal__button_disabled:hover {
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 
 @media only screen and (max-width: 471px) and (min-width: 0) {
