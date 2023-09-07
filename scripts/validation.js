@@ -12,7 +12,7 @@ function hideInputError(formEls, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEls.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.remove(inputErrorClass);
   errorMessageEl.textContent = "";
-  errorMessageEl.classList.remove(errorClass);
+  errorMessageEl.classList.add(errorClass);
 }
 
 function checkInputValidity(formEl, inputEl, options) {
@@ -27,26 +27,26 @@ function hasInvlaidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
-function toggleButtonState(inputEls, submitBtn, { inactiveButtonClass }) {
+function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvlaidInput(inputEls)) {
-    submitBtn.classList.add(inactiveButtonClass);
-    submitBtn.disabled = true;
+    submitButton.classList.add(inactiveButtonClass);
+    submitButton.disabled = true;
     return;
   }
 
-  submitBtn.classList.remove(inactiveButtonClass);
-  submitBtn.disabled = false;
+  submitButton.classList.remove(inactiveButtonClass);
+  submitButton.disabled = false;
 }
 
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  const submitBtn = formEl.querySelector(".modal__button");
+  const submitButton = formEl.querySelector(".modal__button");
 
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("change", (e) => {
       checkInputValidity(formEl, inputEl, options);
-      toggleButtonState(inputEls, submitBtn);
+      toggleButtonState(inputEls, submitButton, options);
     });
   });
 }
