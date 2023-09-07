@@ -140,6 +140,15 @@
   line-height: normal;
 }
 
+.modal__error {
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  position: absolute;
+  top: 45%;
+  transition: opacity 0.3s;
+}
+
 @media only screen and (max-width: 471px) and (min-width: 0) {
   .modal__container {
     max-width: 282px;
