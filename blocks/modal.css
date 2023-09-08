@@ -85,7 +85,6 @@
 .modal__button:hover {
   cursor: pointer;
   opacity: 0.8;
-  background: #000;
 }
 
 .modal__button-text {
@@ -162,7 +161,8 @@
 }
 
 .modal__button_disabled {
-  background: rgba(0, 0, 0, 0.8);
+  background: gray;
+  opacity: 0.8;
 }
 
 .modal__button_disabled:hover {
