@@ -69,6 +69,7 @@ const profileAddButton = document.querySelector("#profile-add-button");
 
 function closePopup(popup) {
   popup.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeByEscape);
 }
 
 function openModal(modal) {
