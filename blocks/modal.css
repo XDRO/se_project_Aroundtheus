@@ -148,7 +148,7 @@
   line-height: normal;
 }
 
-.modal__error-input_title {
+.modal__error_title {
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
@@ -156,7 +156,7 @@
   top: 45%;
 }
 
-.modal__error-input_description {
+.modal__error_description {
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
