@@ -112,7 +112,7 @@
   padding-bottom: 14px;
 }
 
-.modal__input:invalid {
+.modal__input_type_error:invalid {
   border-bottom: 1px solid rgba(255, 0, 0, 0.2);
 }
 
@@ -150,7 +150,6 @@
   color: #ff0000;
   position: absolute;
   top: 45%;
-  transition: opacity 0.3s;
 }
 
 .modal__error-input_description {
@@ -159,15 +158,12 @@
   color: #ff0000;
   position: absolute;
   top: 65%;
-  transition: opacity 0.3s;
 }
 
-.modal__button_disabled {
-  opacity: 0.2;
-}
+/* .modal__button_disabled {
+} */
 
 .modal__button_disabled:hover {
-  opacity: 0.2;
   cursor: not-allowed;
 }
 
