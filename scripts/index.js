@@ -32,7 +32,7 @@ const initialCards = [
 ];
 
 // Elements
-const modalClass = [...document.querySelectorAll(".modal")];
+const modalClass = [...document.querySelectorAll("modals")];
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
@@ -125,28 +125,26 @@ function handleProfileAddSubmit(e) {
 
 //event listeners
 profileEditButton.addEventListener("click", () => {
-  toggleButtonState(
-    [profileTitleInput, profileDescriptionInput],
-    profileEditForm,
-    config
-  );
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDesciption.textContent;
-  profileEditModal.classList.remove("modal__hidden");
   openModal(profileEditModal);
 });
 
 document.addEventListener("keydown", function (e) {
   if (e.key == "Escape") {
-    profileAddModal.classList.add("modal__hidden");
-    profileEditModal.classList.add("modal__hidden");
+    profileAddModal.classList.remove("modal_opened");
+    profileEditModal.classList.remove("modal_opened");
   }
 });
 
 // add new card button
 profileAddButton.addEventListener("click", () => {
+  toggleButtonState(
+    [profileTitleInput, profileDescriptionInput],
+    profileEditForm,
+    config
+  );
   openModal(profileAddModal);
-  profileAddModal.classList.remove("modal__hidden");
 });
 
 profileAddCloseButton.addEventListener("click", () => {
