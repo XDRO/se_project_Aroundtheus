@@ -18,10 +18,7 @@
   display: flex;
   visibility: visible;
   opacity: 1;
-}
-
-.modal__hidden {
-  display: none;
+  transition: 0.2s linear;
 }
 
 .modal__close {
@@ -164,8 +161,9 @@
   top: 65%;
 }
 
-/* .modal__button_disabled {
-} */
+.modal__button_disabled {
+  opacity: 0.2;
+}
 
 .modal__button_disabled:hover {
   cursor: not-allowed;
