@@ -132,17 +132,21 @@ profileEditButton.addEventListener("click", () => {
   );
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDesciption.textContent;
+  profileEditModal.classList.remove("modal__hidden");
   openModal(profileEditModal);
 });
 
 document.addEventListener("keydown", function (e) {
   if (e.key == "Escape") {
+    profileAddModal.classList.add("modal__hidden");
+    profileEditModal.classList.add("modal__hidden");
   }
 });
 
 // add new card button
 profileAddButton.addEventListener("click", () => {
   openModal(profileAddModal);
+  profileAddModal.classList.remove("modal__hidden");
 });
 
 profileAddCloseButton.addEventListener("click", () => {
