@@ -65,6 +65,7 @@ const cardTemplate =
 const profileAddButton = document.querySelector("#profile-add-button");
 
 // functions
+
 function closePopup(popup) {
   popup.classList.remove("modal_opened");
 }
@@ -123,6 +124,11 @@ function handleProfileAddSubmit(e) {
 
 //event listeners
 profileEditButton.addEventListener("click", () => {
+  toggleButtonState(
+    [profileTitleInput, profileDescriptionInput],
+    profileEditForm,
+    config
+  );
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDesciption.textContent;
   openModal(profileEditModal);
