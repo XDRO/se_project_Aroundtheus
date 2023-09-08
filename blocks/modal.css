@@ -20,6 +20,10 @@
   opacity: 1;
 }
 
+.modal__hidden {
+  display: none;
+}
+
 .modal__close {
   background-image: url("../images/X-button.svg");
   border: none;
