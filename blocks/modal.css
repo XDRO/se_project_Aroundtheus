@@ -162,7 +162,7 @@
 }
 
 .modal__button_disabled {
-  opacity: 0.2;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .modal__button_disabled:hover {
