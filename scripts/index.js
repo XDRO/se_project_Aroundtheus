@@ -32,7 +32,7 @@ const initialCards = [
 ];
 
 // Elements
-const modalClass = [...document.querySelectorAll("modals")];
+const modalClass = [...document.querySelectorAll(".modal")];
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
@@ -73,6 +73,7 @@ function closePopup(popup) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeByEscape);
 }
 
 function getCardElement(cardData) {
@@ -123,6 +124,13 @@ function handleProfileAddSubmit(e) {
   profileAddForm.reset();
 }
 
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".modal_opened");
+    closePopup(openedPopup);
+  }
+}
+
 //event listeners
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
@@ -130,18 +138,12 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-document.addEventListener("keydown", function (e) {
-  if (e.key == "Escape") {
-    profileAddModal.classList.remove("modal_opened");
-    profileEditModal.classList.remove("modal_opened");
-  }
-});
-
 // add new card button
 profileAddButton.addEventListener("click", () => {
   toggleButtonState(
     [profileTitleInput, profileDescriptionInput],
     profileEditForm,
+    profileAddForm,
     config
   );
   openModal(profileAddModal);
