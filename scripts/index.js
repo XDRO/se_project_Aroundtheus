@@ -144,7 +144,6 @@ profileAddButton.addEventListener("click", () => {
   toggleButtonState(
     [addCardModalTitleInput, addCardModalLinkInput],
     profileAddForm,
-    profileEditForm,
     config
   );
   openModal(profileAddModal);
