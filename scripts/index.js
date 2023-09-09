@@ -33,6 +33,7 @@ const initialCards = [
 
 // Elements
 const modals = [...document.querySelectorAll(".modal")];
+const modalAddSubmitButton = document.getElementById("modal-submit-button");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
@@ -143,7 +144,7 @@ profileEditButton.addEventListener("click", () => {
 profileAddButton.addEventListener("click", () => {
   toggleButtonState(
     [addCardModalTitleInput, addCardModalLinkInput],
-    profileAddForm,
+    modalAddSubmitButton,
     config
   );
   openModal(profileAddModal);
