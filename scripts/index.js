@@ -32,7 +32,7 @@ const initialCards = [
 ];
 
 // Elements
-const modalClass = [...document.querySelectorAll(".modal")];
+const modals = [...document.querySelectorAll(".modal")];
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
@@ -150,18 +150,6 @@ profileAddButton.addEventListener("click", () => {
   openModal(profileAddModal);
 });
 
-profileAddCloseButton.addEventListener("click", () => {
-  closePopup(profileAddModal);
-});
-
-profileEditCloseButton.addEventListener("click", () => {
-  closePopup(profileEditModal);
-});
-
-previewImageCloseModal.addEventListener("click", () => {
-  closePopup(previewImageModal);
-});
-
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
@@ -170,13 +158,14 @@ initialCards.forEach((cardData) => {
   cardListEl.prepend(cardElement);
 });
 
-modalClass.forEach((modalContainer) => {
+modals.forEach((modalContainer) => {
   modalContainer.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("modal_opened")) {
       closePopup(modalContainer);
     }
     if (evt.target.classList.contains("modal__close")) {
       openModal(modalContainer);
+      closePopup(modalContainer);
     }
   });
 });
