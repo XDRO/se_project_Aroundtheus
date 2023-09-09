@@ -142,9 +142,9 @@ profileEditButton.addEventListener("click", () => {
 // add new card button
 profileAddButton.addEventListener("click", () => {
   toggleButtonState(
-    [profileTitleInput, profileDescriptionInput],
-    profileEditForm,
+    [addCardModalTitleInput, addCardModalLinkInput],
     profileAddForm,
+    profileEditForm,
     config
   );
   openModal(profileAddModal);
