@@ -164,7 +164,6 @@ modals.forEach((modalContainer) => {
       closePopup(modalContainer);
     }
     if (evt.target.classList.contains("modal__close")) {
-      openModal(modalContainer);
       closePopup(modalContainer);
     }
   });
