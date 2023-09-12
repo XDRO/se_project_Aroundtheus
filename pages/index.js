@@ -1,5 +1,5 @@
-import Card from "../componenets/Card.js";
-
+import Card from "../components/Card.js";
+console.log(Card);
 
 const initialCards = [
   {
@@ -34,18 +34,20 @@ const initialCards = [
   },
 ];
 
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+};
+const card = new Card(cardData, "#card-template");
+const cardElement = card.getView();
+
 // Elements
 const modals = [...document.querySelectorAll(".modal")];
 const modalAddSubmitButton = document.querySelector("#modal-submit-button");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
-const profileEditCloseButton = profileEditModal.querySelector(".modal__close");
-const profileAddCloseButton = profileAddModal.querySelector(".modal__close");
 const previewImageModal = document.querySelector("#preview-image-modal");
-const previewImageCloseModal = previewImageModal.querySelector(
-  "#preview-image-close-modal"
-);
 const previewImageCard = document.querySelector(".modal__preview-image");
 const previewImageDescription = document.querySelector(
   ".modal__preview-description"
@@ -89,18 +91,20 @@ function getCardElement(cardData) {
   );
   const likeButton = cardElement.querySelector(".card__like-button");
   const cardDeleteButton = cardElement.querySelector(".card__delete-button");
+
   cardDeleteButton.addEventListener("click", () => {
     cardElement.remove("card__delete-button");
   });
   cardImageEl.addEventListener("click", () => {
-    previewImageCard.src = cardData.link;
-    previewImageCard.alt = cardData.alt;
-    previewImageDescription.textContent = cardData.name;
     openModal(previewImageModal);
   });
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
+  // likeButton.addEventListener("click", () => {
+  //   likeButton.classList.toggle("card__like-button_active");
+  // });
+
+  previewImageCard.src = cardData.link;
+  previewImageCard.alt = cardData.alt;
+  previewImageDescription.textContent = cardData.name;
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.alt;
