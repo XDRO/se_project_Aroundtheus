@@ -1,5 +1,6 @@
 import Card from "../componenets/Card.js";
 
+
 const initialCards = [
   {
     name: "Yosemite Valley",
