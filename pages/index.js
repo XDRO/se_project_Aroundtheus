@@ -83,12 +83,13 @@ function openModal(modal) {
 function getCardElement(cardData) {
   const card = new Card(cardData, "#card-template");
   const cardElement = card.getView();
-  const cardImageEl = cardElement.querySelector(".card__image");
+  // const cardImage = cardElement.querySelector(".card__image");
+  const cardImage = card.getView();
   const cardDescriptionTextEl = cardElement.querySelector(
     ".card__description-text"
   );
 
-  // cardImageEl.addEventListener("click", () => {
+  // cardImage.addEventListener("click", () => {
   //   openModal(previewImageModal);
   // });
 
@@ -96,8 +97,8 @@ function getCardElement(cardData) {
   previewImageCard.alt = cardData.alt;
   previewImageDescription.textContent = cardData.name;
 
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.alt;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.alt;
   cardDescriptionTextEl.textContent = cardData.name;
 
   return cardElement;

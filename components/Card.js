@@ -18,12 +18,10 @@ export default class Card {
         this._handleDeleteCard();
       });
     //".card__image"
-    const cardImage = this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleImageClick();
-      });
-    console.log(cardImage);
+    const cardImage = this._cardElement.querySelector(".card__image");
+    // .addEventListener("click", () => {
+    //   this._handleImageClick();
+    // });
   }
 
   _handleLikeIcon() {
@@ -39,7 +37,7 @@ export default class Card {
   _handleImageClick() {
     this._cardElement
       .querySelector("#preview-image-modal")
-      .classList.add("modal_opened");
+      .classList.add(".modal_opened");
   }
 
   getView() {
