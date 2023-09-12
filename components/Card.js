@@ -18,18 +18,28 @@ export default class Card {
         this._handleDeleteCard();
       });
     //".card__image"
-    const cardImage = this._cardElement.querySelector(".card__image");
+    const cardImage = this._cardElement
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        this._handleImageClick();
+      });
+    console.log(cardImage);
   }
 
   _handleLikeIcon() {
     this._cardElement
       .querySelector(".card__like-button")
-      // you don't need the dot or (.) for the toggle method
       .classList.toggle("card__like-button_active");
   }
 
   _handleDeleteCard() {
     this._cardElement.remove();
+  }
+
+  _handleImageClick() {
+    this._cardElement
+      .querySelector("#preview-image-modal")
+      .classList.add("modal_opened");
   }
 
   getView() {
@@ -41,6 +51,6 @@ export default class Card {
     // set event listeners
     this._setEventListeners();
     //return the card
-    return Card;
+    return this._cardElement;
   }
 }

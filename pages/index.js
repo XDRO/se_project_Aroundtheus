@@ -1,5 +1,4 @@
 import Card from "../components/Card.js";
-console.log(Card);
 
 const initialCards = [
   {
@@ -38,8 +37,6 @@ const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
-const card = new Card(cardData, "#card-template");
-const cardElement = card.getView();
 
 // Elements
 const modals = [...document.querySelectorAll(".modal")];
@@ -84,22 +81,15 @@ function openModal(modal) {
 }
 
 function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
+  const card = new Card(cardData, "#card-template");
+  const cardElement = card.getView();
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardDescriptionTextEl = cardElement.querySelector(
     ".card__description-text"
   );
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 
-  cardDeleteButton.addEventListener("click", () => {
-    cardElement.remove("card__delete-button");
-  });
-  cardImageEl.addEventListener("click", () => {
-    openModal(previewImageModal);
-  });
-  // likeButton.addEventListener("click", () => {
-  //   likeButton.classList.toggle("card__like-button_active");
+  // cardImageEl.addEventListener("click", () => {
+  //   openModal(previewImageModal);
   // });
 
   previewImageCard.src = cardData.link;
@@ -159,6 +149,11 @@ profileAddButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileAddForm.addEventListener("submit", handleProfileAddSubmit);
+
+// function renderCards(cardData, wrapper) {
+//   const cardElement = new Card(cardData, wrapper);
+//   wrapper.prepend(cardElement.getView());
+// }
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
