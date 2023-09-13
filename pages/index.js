@@ -99,7 +99,7 @@ const editFormValidator = new FormValidation(
   validationSettings,
   profileEditForm
 );
-// editFormValidator.enableValidation();
+editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidation(validationSettings, profileAddForm);
 // addFormValidator.enableValidation();
