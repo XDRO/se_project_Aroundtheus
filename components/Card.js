@@ -1,166 +1,52 @@
-import Card from "../components/Card.js";
+export default class Card {
+  constructor({ name, link }, cardSelector, _handleImageClick) {
+    this._name = name;
+    this._link = link;
+    this._cardSelector = cardSelector;
+  }
+  _setEventListeners() {
+    //".card__like-button"
+    const likeButton = this._cardElement
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => {
+        this._handleLikeIcon();
+      });
+    //".card__delete-button"
+    const deleteButton = this._cardElement
+      .querySelector(".card__delete-button")
+      .addEventListener("click", () => {
+        this._handleDeleteCard();
+      });
+    //".card__image"
+    // this._cardElement
+    //   .querySelector(".card__image")
+    //   .addEventListener("click", () => {
+    //     this._handleImageClick({ name: this._name, link: this._link });
+    //   });
+  }
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-    alt: "Yosemite Valley",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-    alt: "Lake Lousie",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-    alt: "Bald Mountains",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-    alt: "Latemar",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-    alt: "Vanoise National Park",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg ",
-    alt: "Lago di Braies",
-  },
-];
+  _handleLikeIcon() {
+    this._cardElement
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_active");
+  }
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
+  _handleDeleteCard() {
+    this._cardElement.remove();
+  }
 
-// Elements
-const modals = [...document.querySelectorAll(".modal")];
-const modalAddSubmitButton = document.querySelector("#modal-submit-button");
-const profileEditButton = document.querySelector("#profile-edit-button");
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileAddModal = document.querySelector("#profile-add-modal");
-const previewImageModal = document.querySelector("#preview-image-modal");
-const previewImageCard = document.querySelector(".modal__preview-image");
-const previewImageDescription = document.querySelector(
-  ".modal__preview-description"
-);
-const profileTitle = document.querySelector(".profile__title");
-const profileDesciption = document.querySelector(".profile__description");
-const profileTitleInput = document.querySelector("#profile-title-input");
-const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
-);
-const profileEditForm = profileEditModal.querySelector("#edit-card-form");
-const profileAddForm = profileAddModal.querySelector(".modal__form");
-const addCardModalTitleInput = document.querySelector(
-  "#add-card-modal-title-input"
-);
-const addCardModalLinkInput = document.querySelector(
-  "#add-card-modal-link-input"
-);
-const cardListEl = document.querySelector(".cards__list");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-const profileAddButton = document.querySelector("#profile-add-button");
-
-// functions
-
-function closePopup(popup) {
-  popup.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeByEscape);
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeByEscape);
-}
-
-function getCardElement(cardData) {
-  // const card = new Card(cardData, "#card-template");
-  // const cardElement = card.getView();
-  // const cardImage = cardElement.querySelector(".card__image");
-  // const cardImage = card.getView();
-  const cardDescriptionTextEl = cardElement.querySelector(
-    ".card__description-text"
-  );
-
-  // cardImage.addEventListener("click", () => {
-  //   openModal(previewImageModal);
-  // });
-
-  previewImageCard.src = cardData.link;
-  previewImageCard.alt = cardData.alt;
-  previewImageDescription.textContent = cardData.name;
-
-  return cardElement;
-}
-
-// event handlers
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDesciption.textContent = profileDescriptionInput.value;
-  closePopup(profileEditModal);
-}
-
-function handleProfileAddSubmit(e) {
-  e.preventDefault();
-  const cardData = {
-    name: addCardModalTitleInput.value,
-    link: addCardModalLinkInput.value,
-  };
-  const card = new Card(cardData, "#card-template");
-  const cardElement = card.getView();
-  // const card = getView(cardData);
-  cardListEl.prepend(cardElement);
-  closePopup(profileAddModal);
-  profileAddForm.reset();
-}
-
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".modal_opened");
-    closePopup(openedPopup);
+  getView() {
+    this._cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
+    // select the image element
+    this._cardElement.querySelector(".card__image");
+    cardImage.src = this._name;
+    cardImage.alt = this._link;
+    // cardDescriptionTextEl.textContent = ;
+    // add src and alt
+    this._setEventListeners();
+    return this._cardElement;
   }
 }
-
-//event listeners
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDesciption.textContent;
-  openModal(profileEditModal);
-});
-
-// add new card button
-profileAddButton.addEventListener("click", () => {
-  toggleButtonState(
-    [addCardModalTitleInput, addCardModalLinkInput],
-    modalAddSubmitButton,
-    config
-  );
-  openModal(profileAddModal);
-});
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-profileAddForm.addEventListener("submit", handleProfileAddSubmit);
-
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
-});
-
-modals.forEach((modalContainer) => {
-  modalContainer.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("modal_opened")) {
-      closePopup(modalContainer);
-    }
-    if (evt.target.classList.contains("modal__close")) {
-      closePopup(modalContainer);
-    }
-  });
-});
