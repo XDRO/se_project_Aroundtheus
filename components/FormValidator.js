@@ -21,12 +21,19 @@ export default class FormValidation {
     errorMessageEl.classList.remove(errorClass);
   }
 
-  _hasInvaildInput(inputList) {
-    return !inputList.every((inputElm) => inputElm.validity.valid);
+  //   _hasInvaildInput() {
+  //     return !this._inputSelector.every(
+  //       (formElement) => formElement.validity.valid
+  //     );
+  //   }
+
+  _hasInvaildInput() {
+    console.log();
+    // return !inputElm.every((inputEl) => inputEl.validity.valid);
   }
 
   _toggleButtonState(inputElm, submitButton, { inactiveButtonClass }) {
-    if (hasInvlaidInput(inputElm)) {
+    if (this._hasInvaildInput(inputElm)) {
       submitButton.classList.add(inactiveButtonClass);
       submitButton.disabled = true;
       return;
@@ -68,4 +75,3 @@ export default class FormValidation {
     });
   }
 }
-
