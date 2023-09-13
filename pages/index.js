@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import FormValidation from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -45,10 +46,6 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
-const previewImageCard = document.querySelector(".modal__preview-image");
-const previewImageDescription = document.querySelector(
-  ".modal__preview-description"
-);
 const profileTitle = document.querySelector(".profile__title");
 const profileDesciption = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -64,8 +61,6 @@ const addCardModalLinkInput = document.querySelector(
   "#add-card-modal-link-input"
 );
 const cardListEl = document.querySelector(".cards__list");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
 const profileAddButton = document.querySelector("#profile-add-button");
 
 // functions
@@ -90,6 +85,24 @@ function handleImageClick(data) {
   previewImageTitle.textContent = data.name;
   openModal(previewImageModal);
 }
+
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormValidator = new FormValidation(
+  validationSettings,
+  profileEditForm
+);
+// editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidation(validationSettings, profileAddForm);
+// addFormValidator.enableValidation();
 
 // event handlers
 function handleProfileEditSubmit(e) {
@@ -127,11 +140,11 @@ profileEditButton.addEventListener("click", () => {
 
 // add new card button
 profileAddButton.addEventListener("click", () => {
-  toggleButtonState(
-    [addCardModalTitleInput, addCardModalLinkInput],
-    modalAddSubmitButton,
-    config
-  );
+  // toggleButtonState(
+  //   [addCardModalTitleInput, addCardModalLinkInput],
+  //   modalAddSubmitButton,
+  //   config
+  // );
   openModal(profileAddModal);
 });
 
