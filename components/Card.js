@@ -1,8 +1,9 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, _handleImageClick) {
+  constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._handleImageClick = handleImageClick;
   }
   _setEventListeners() {
     //".card__like-button"
@@ -18,11 +19,11 @@ export default class Card {
         this._handleDeleteCard();
       });
     //".card__image"
-    // this._cardElement
-    //   .querySelector(".card__image")
-    //   .addEventListener("click", () => {
-    //     this._handleImageClick({ name: this._name, link: this._link });
-    //   });
+    this._cardElement
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        this._handleImageClick({ name: this._name, link: this._link });
+      });
   }
 
   _handleLikeIcon() {
@@ -41,9 +42,13 @@ export default class Card {
       .content.querySelector(".card")
       .cloneNode(true);
     // select the image element
-    this._cardElement.querySelector(".card__image");
-    cardImage.src = this._name;
-    cardImage.alt = this._link;
+    this._cardImage = this._cardElement.querySelector(".card__image");
+    this._cardImage.src = this._link;
+    this._cardText = this._cardElement.querySelector(".card__description-text");
+    this._cardText.textContent = this._name;
+    this._cardPreviewImage = this._cardElement.querySelector(
+      "#preview-image-modal"
+    );
     // cardDescriptionTextEl.textContent = ;
     // add src and alt
     this._setEventListeners();
