@@ -18,25 +18,24 @@ export default class FormValidation {
     errorMessageEl.classList.add(this._errorClass);
   }
 
-  _hideInputError(inputEl, formEl) {
-    // const errorMessageEl = document.querySelector(".modal__input");
-    const errorMessageEl = formEl.querySelector(".modal__input");
+  _hideInputError() {
+    const errorMessageEl = document.querySelector(".modal__input");
     errorMessageEl.textContent = " ";
     errorMessageEl.classList.remove(this._errorClass);
   }
 
-  _hasInvaildInput() {
+  _hasInvalidInput() {
     return !this._inputElm.every((inputEl) => inputEl.validity.valid);
   }
 
-  _toggleButtonState(inputElm, submitButton, { inactiveButtonClass }) {
-    if (this._hasInvaildInput(inputElm)) {
-      submitButton.classList.add(inactiveButtonClass);
-      submitButton.disabled = true;
+  _toggleButtonState(inputElm) {
+    if (this._hasInvalidInput(inputElm)) {
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.disabled = true;
       return;
     }
-    submitButton.classList.remove(inactiveButtonClass);
-    submitButton.disabled = false;
+    this._submitButton.classList.remove(this._inactiveButtonClass);
+    this._submitButton.disabled = false;
   }
 
   _checkInputValidity(formEl, inputEl) {
@@ -56,12 +55,12 @@ export default class FormValidation {
     );
   };
 
-  setEventListeners(formEl, config) {
+  setEventListeners(formEl) {
     const submitButton = document.querySelector(this._submitButtonSelector);
     this._inputElm.forEach((inputEl) => {
       inputEl.addEventListener("input", () => {
-        this._checkInputValidity(formEl, inputEl, config);
-        this._toggleButtonState(inputEl, submitButton, config);
+        this._checkInputValidity(formEl, inputEl);
+        this._toggleButtonState(inputEl, submitButton);
       });
     });
   }
@@ -70,7 +69,7 @@ export default class FormValidation {
     this._form.addEventListener("submit", (e) => {
       e.preventDefault();
     });
-    this.setEventListeners(this.form, {
+    this.setEventListeners(this._form, {
       inputErrorClass: this._inputErrorClass,
       errorClass: this._errorClass,
       inactiveButtonClass: this._inactiveButtonClass,

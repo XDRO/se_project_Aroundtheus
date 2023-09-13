@@ -102,6 +102,8 @@ const editFormValidator = new FormValidation(
 editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidation(validationSettings, profileAddForm);
+addFormValidator.enableValidation();
+
 // addFormValidator.enableValidation();
 
 // event handlers
@@ -118,8 +120,9 @@ function handleProfileAddSubmit(e) {
     name: addCardModalTitleInput.value,
     link: addCardModalLinkInput.value,
   };
-  const card = getView(cardData);
-  cardListEl.prepend(card);
+  const cardElement = new Card(cardData, "card__image");
+  // const cardElement = getView(cardData);
+  cardListEl.prepend(cardElement);
   closePopup(profileAddModal);
   profileAddForm.reset();
 }
