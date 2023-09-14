@@ -34,7 +34,7 @@ const initialCards = [
   },
 ];
 
-const cardData = {
+const data = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
@@ -62,8 +62,16 @@ const addCardModalLinkInput = document.querySelector(
 );
 const cardListEl = document.querySelector(".cards__list");
 const profileAddButton = document.querySelector("#profile-add-button");
+// const cardTemplate = document
+//   .querySelector("#card-template")
+//   .content.firstElementChild.cloneNode(true);
 
 // functions
+function getCardElement(data) {
+  const card = new Card(data, "#card-template", handleImageClick);
+  const cardElement = card.getView();
+  return cardElement;
+}
 
 function closePopup(popup) {
   popup.classList.remove("modal_opened");
@@ -122,7 +130,7 @@ function handleProfileAddSubmit(e) {
   };
   const cardElement = new Card(cardData);
   // const cardElement = getView(cardData);
-  cardListEl.prepend(cardElement);
+  cardListEl.prepend(cardElement.getElement(cardData));
   closePopup(profileAddModal);
   profileAddForm.reset();
 }
@@ -154,9 +162,20 @@ profileAddButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 profileAddForm.addEventListener("submit", handleProfileAddSubmit);
 
-initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.getView();
+// initialCards.forEach((cardData) => {
+//   const card = new Card(cardData, "#card-template", handleImageClick);
+//   const cardElement = card.getView();
+//   cardListEl.prepend(cardElement);
+// });
+
+// initialCards.forEach((cardData) => {
+//   const card = new Card(cardData, "#card-template", handleImageClick);
+//   const cardElement = card.getElement();
+//   cardListEl.prepend(cardElement);
+// });
+
+initialCards.forEach((data) => {
+  const cardElement = getCardElement(data);
   cardListEl.prepend(cardElement);
 });
 
