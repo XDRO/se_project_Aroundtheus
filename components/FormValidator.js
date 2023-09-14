@@ -28,8 +28,8 @@ export default class FormValidation {
     return !this._inputElm.every((inputEl) => inputEl.validity.valid);
   }
 
-  _toggleButtonState(inputElm) {
-    if (this._hasInvalidInput(inputElm)) {
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
       this._submitButton.classList.add(this._inactiveButtonClass);
       this._submitButton.disabled = true;
       return;
@@ -55,12 +55,11 @@ export default class FormValidation {
     );
   };
 
-  setEventListeners(formEl) {
-    const submitButton = document.querySelector(this._submitButtonSelector);
+  setEventListeners() {
     this._inputElm.forEach((inputEl) => {
       inputEl.addEventListener("input", () => {
-        this._checkInputValidity(formEl, inputEl);
-        this._toggleButtonState(inputEl, submitButton);
+        this._checkInputValidity(this._form, inputEl);
+        this._toggleButtonState();
       });
     });
   }
@@ -69,10 +68,6 @@ export default class FormValidation {
     this._form.addEventListener("submit", (e) => {
       e.preventDefault();
     });
-    this.setEventListeners(this._form, {
-      inputErrorClass: this._inputErrorClass,
-      errorClass: this._errorClass,
-      inactiveButtonClass: this._inactiveButtonClass,
-    });
+    this.setEventListeners();
   }
 }
