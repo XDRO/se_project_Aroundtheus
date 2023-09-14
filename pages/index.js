@@ -120,7 +120,7 @@ function handleProfileAddSubmit(e) {
     name: addCardModalTitleInput.value,
     link: addCardModalLinkInput.value,
   };
-  const cardElement = new Card(cardData, "card__image");
+  const cardElement = new Card(cardData);
   // const cardElement = getView(cardData);
   cardListEl.prepend(cardElement);
   closePopup(profileAddModal);
