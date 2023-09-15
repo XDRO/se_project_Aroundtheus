@@ -131,6 +131,7 @@ function handleProfileAddSubmit(e) {
   // const cardElement = new Card(cardData);
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
+  addFormValidator._toggleButtonState();
   closePopup(profileAddModal);
   profileAddForm.reset();
 }
