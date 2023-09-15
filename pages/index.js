@@ -54,6 +54,7 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileEditForm = profileEditModal.querySelector("#edit-card-form");
 const profileAddForm = profileAddModal.querySelector(".modal__form");
+const modalInputs = document.querySelectorAll(".modal__input");
 const addCardModalTitleInput = document.querySelector(
   "#add-card-modal-title-input"
 );
@@ -131,7 +132,7 @@ function handleProfileAddSubmit(e) {
   // const cardElement = new Card(cardData);
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
-  profileAddButton.toggleButtonState();
+  editFormValidator.toggleButtonState();
   closePopup(profileAddModal);
   profileAddForm.reset();
 }
