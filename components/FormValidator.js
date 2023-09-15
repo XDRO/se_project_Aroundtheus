@@ -18,10 +18,10 @@ export default class FormValidation {
     errorMessageEl.classList.add(this._errorClass);
   }
 
-  _hideInputError() {
-    const errorMessageEl = document.querySelector(".modal__input");
-    errorMessageEl.textContent = " ";
-    errorMessageEl.classList.remove(this._errorClass);
+  _hideInputError(formEls, inputEl) {
+    const errorMessageEl = formEls.querySelector(`#${inputEl.id}-error`);
+    inputEl.classList.remove(this._inputErrorClass);
+    errorMessageEl.textContent = "";
   }
 
   _hasInvalidInput() {
@@ -38,14 +38,14 @@ export default class FormValidation {
     this._submitButton.disabled = false;
   }
 
-  _checkInputValidity(formEl, inputEl) {
+  _checkInputValidity(formEls, inputEl) {
     if (!inputEl.validity.valid) {
       this._showInputError(
         inputEl,
         document.querySelector(`#${inputEl.id}-error`)
       );
     } else {
-      this._hideInputError(formEl, inputEl);
+      this._hideInputError(formEls, inputEl);
     }
   }
 
