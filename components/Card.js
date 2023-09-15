@@ -36,22 +36,14 @@ export default class Card {
     this._cardElement.remove();
   }
 
-  getElement() {
+  _getElement() {
     return document
       .querySelector(this._cardSelector)
-      .content.querySelector(".card")
-      .cloneNode(true);
+      .content.firstElementChild.cloneNode(true);
   }
 
-  // getElement() {
-  //   this._cardElement = document
-  //     .querySelector(this._cardSelector)
-  //     .content.querySelector(".card")
-  //     .cloneNode(true);
-  // }
-
   getView() {
-    this._cardElement = this.getElement();
+    this._cardElement = this._getElement();
     const cardTitle = this._cardElement.querySelector(
       ".card__description-text"
     );
@@ -62,24 +54,5 @@ export default class Card {
     this._setEventListeners();
     return this._cardElement;
   }
-}
 
-//   getView() {
-//     this._cardElement = document
-//       .querySelector(this._cardSelector)
-//       .content.querySelector(".card")
-//       .cloneNode(true);
-//     // select the image element
-//     this._cardImage = this._cardElement.querySelector(".card__image");
-//     this._cardImage.src = this._link;
-//     this._cardText = this._cardElement.querySelector(".card__description-text");
-//     this._cardText.textContent = this._name;
-//     this._cardPreviewImage = this._cardElement.querySelector(
-//       "#preview-image-modal"
-//     );
-//     // cardDescriptionTextEl.textContent = ;
-//     // add src and alt
-//     this._setEventListeners();
-//     return this._cardElement;
-//   }
-// }
+}
