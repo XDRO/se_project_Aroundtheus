@@ -132,7 +132,7 @@ function handleProfileAddSubmit(e) {
   // const cardElement = new Card(cardData);
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
-  editFormValidator.toggleButtonState();
+  // editFormValidator.toggleButtonState();
   closePopup(profileAddModal);
   profileAddForm.reset();
 }
@@ -153,6 +153,7 @@ profileEditButton.addEventListener("click", () => {
 
 // add new card button
 profileAddButton.addEventListener("click", () => {
+  addFormValidator.toggleButtonState();
   openModal(profileAddModal);
 });
 
