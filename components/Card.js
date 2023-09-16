@@ -7,13 +7,13 @@ export default class Card {
   }
   _setEventListeners() {
     //".card__like-button"
-    const likeButton = this._cardElement
+    this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
     //".card__delete-button"
-    const deleteButton = this._cardElement
+    this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
         this._handleDeleteCard();
@@ -34,6 +34,7 @@ export default class Card {
 
   _handleDeleteCard() {
     this._cardElement.remove();
+    this._cardElement = null;
   }
 
   _getElement() {
@@ -54,5 +55,4 @@ export default class Card {
     this._setEventListeners();
     return this._cardElement;
   }
-
 }
