@@ -1,7 +1,7 @@
 import Card from "./Card.js";
 import FormValidation from "./FormValidator.js";
 
-// import "../pages/index.css";
+import "../pages/index.css";
 
 const initialCards = [
   {
