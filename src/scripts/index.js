@@ -84,8 +84,8 @@ const newCardPopup = new PopupWithForm(
 
 // functions
 function handleCardFormSubmit(data) {
-  const newCardPopup = new Card(data, "#card-template", handleCardFormSubmit);
-  const cardElement = newCardPopup.getView();
+  const card = new Card(data, "#card-template", handleCardFormSubmit);
+  const cardElement = card.getView();
   const cardData = {
     name: addCardModalTitleInput.value,
     link: addCardModalLinkInput.value,
@@ -185,7 +185,7 @@ profileAddButton.addEventListener("click", () => {
 });
 
 profileEditForm.addEventListener("submit", handleCardFormSubmit);
-// profileAddForm.addEventListener("submit", handleCardFormSubmit);
+profileAddForm.addEventListener("submit", handleCardFormSubmit);
 
 initialCards.forEach((data) => {
   const cardElement = getCardElement(data);
