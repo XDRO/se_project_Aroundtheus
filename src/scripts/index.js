@@ -75,7 +75,7 @@ const cardTemplate = document
 // popup with form
 
 const newCardPopup = new PopupWithForm(
-  "profile-add-modal",
+  "#profile-add-modal",
   handleCardFormSubmit
 );
 // newCardPopup.open();

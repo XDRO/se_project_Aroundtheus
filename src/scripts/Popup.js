@@ -11,7 +11,7 @@ export default class Popup {
   }
   close() {
     // closes popup
-    this._popupElement.classList.remove(".modal_opened");
+    this._popupElement.classList.remove(".modal__opened");
   }
   _handleEscClose() {
     // listens for esc button
