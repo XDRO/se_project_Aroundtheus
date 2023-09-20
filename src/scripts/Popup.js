@@ -4,16 +4,14 @@ export default class Popup {
   }
   open() {
     //opens popup
-    this._popupElement.queryselector(".modal").classList.add(".modal_opened");
+    this._popupElement.classList.add(".modal_opened");
     this._popupElement
       .querySelector("#preview-image-modal")
       .classList.add(".modal_opened");
   }
   close() {
     // closes popup
-    this._popupElement
-      .queryselector(".modal")
-      .classList.remove(".modal_opened");
+    this._popupElement.classList.remove(".modal_opened");
   }
   _handleEscClose() {
     // listens for esc button
