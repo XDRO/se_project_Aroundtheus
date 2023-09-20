@@ -1,5 +1,7 @@
 import Card from "./Card.js";
 import FormValidation from "./FormValidator.js";
+import Popup from "./Popup.js";
+import PopupWithForm from "./PopupWithForm.js";
 
 import "../pages/index.css";
 
@@ -65,10 +67,19 @@ const addCardModalLinkInput = document.querySelector(
 );
 const cardListEl = document.querySelector(".cards__list");
 const profileAddButton = document.querySelector("#profile-add-button");
-// // NEW
+
 const cardTemplate = document
   .querySelector("#card-template")
   .content.firstElementChild.cloneNode(true);
+
+// popup with form
+const newCardPopup = new PopupWithForm(
+  "profile-add-modal",
+  (popupSelector, handleFormSubmit) => {}
+);
+newCardPopup.open();
+newCardPopup.close();
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // functions
 function getCardElement(data) {
@@ -132,10 +143,8 @@ function handleProfileAddSubmit(e) {
     name: addCardModalTitleInput.value,
     link: addCardModalLinkInput.value,
   };
-  // const cardElement = new Card(cardData);
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
-  // editFormValidator.toggleButtonState();
   closePopup(profileAddModal);
   profileAddForm.reset();
 }
