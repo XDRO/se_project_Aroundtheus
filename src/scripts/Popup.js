@@ -20,6 +20,7 @@ export default class Popup {
       this.close(this._popupElement);
     }
   }
+  handleCardFormSubmit() {}
   setEventListeners() {
     // Add form open button
     this._popupElement
@@ -39,5 +40,13 @@ export default class Popup {
       .addEventListener("click", () => {
         this.close();
       });
+    this._popupElement
+      .querySelector(".modal__button")
+      .addEventListener("click", () => {
+        this.handle;
+      });
+    this._popupElement
+      .querySelector(".modal__form")
+      .addEventListener("submit", handleCardFormSubmit);
   }
 }

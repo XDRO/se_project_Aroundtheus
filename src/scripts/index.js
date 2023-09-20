@@ -86,6 +86,12 @@ const newCardPopup = new PopupWithForm(
 function handleCardFormSubmit(data) {
   const newCardPopup = new Card(data, "#card-template", handleCardFormSubmit);
   const cardElement = newCardPopup.getView();
+  const cardData = {
+    name: addCardModalTitleInput.value,
+    link: addCardModalLinkInput.value,
+  };
+  const cardInput = getCardElement(cardData);
+  cardListEl.prepend(cardInput);
   return cardElement;
   //create a card and add it to the DOM
   // close the modal, reset the form fields
@@ -178,8 +184,8 @@ profileAddButton.addEventListener("click", () => {
   openModal(profileAddModal);
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-profileAddForm.addEventListener("submit", handleCardFormSubmit);
+profileEditForm.addEventListener("submit", handleCardFormSubmit);
+// profileAddForm.addEventListener("submit", handleCardFormSubmit);
 
 initialCards.forEach((data) => {
   const cardElement = getCardElement(data);
