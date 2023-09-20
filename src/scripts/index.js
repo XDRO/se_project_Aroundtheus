@@ -84,19 +84,11 @@ const newCardPopup = new PopupWithForm(
 
 // functions
 function handleCardFormSubmit(data) {
-  const card = new Card(data, "#card-template", handleImageClick);
-  const cardElement = card.getView();
-  const cardData = {
-    name: addCardModalTitleInput.value,
-    link: addCardModalLinkInput.value,
-  };
-  const cardInput = getCardElement(cardData);
+  const cardInput = getCardElement(data);
   cardListEl.prepend(cardInput);
   profileAddForm.reset();
   newCardPopup.close();
-  return cardElement;
-  //create a card and add it to the DOM
-  // close the modal, reset the form fields
+  return cardInput;
 }
 
 function getCardElement(data) {
