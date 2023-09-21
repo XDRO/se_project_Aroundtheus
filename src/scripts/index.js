@@ -84,6 +84,7 @@ const newCardPopup = new PopupWithForm(
 
 // functions
 function handleCardFormSubmit(data) {
+  debugger;
   const cardInput = getCardElement(data);
   cardListEl.prepend(cardInput);
   profileAddForm.reset();
@@ -178,8 +179,8 @@ profileAddButton.addEventListener("click", () => {
   openModal(profileAddModal);
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-profileAddForm.addEventListener("submit", handleCardFormSubmit);
+// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+// profileAddForm.addEventListener("submit", handleCardFormSubmit);
 
 initialCards.forEach((data) => {
   const cardElement = getCardElement(data);
