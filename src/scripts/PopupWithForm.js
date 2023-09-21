@@ -2,7 +2,7 @@ import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super({ popupSelector });
-    this._popupForm = document.querySelector(".modal__form");
+    this._popupForm = this._popupElement.querySelector("#profile-add-modal");
     this._handleFormSubmit = handleFormSubmit;
   }
   open() {
@@ -16,16 +16,15 @@ export default class PopupWithForm extends Popup {
     const inputElements = document.querySelectorAll(".modal__input");
     const inputValues = {};
     inputElements.forEach((inputElement) => {
-      inputValues[inputElement.name] = inputElement.value;
+      inputValues[inputElement.title] = inputElement.value;
     });
     return inputValues;
   }
 
   setEventListeners() {
-    this._popupForm
-      .querySelector(".modal__button")
-      .addEventListener("submit", () => {
-        this._handleFormSubmit(inputValues);
-      });
+    this._popupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+    });
   }
 }

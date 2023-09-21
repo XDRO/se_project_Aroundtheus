@@ -78,13 +78,11 @@ const newCardPopup = new PopupWithForm(
   "#profile-add-modal",
   handleCardFormSubmit
 );
-// newCardPopup.open();
 // newCardPopup.close();
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// newCardPopup.open();
 
 // functions
 function handleCardFormSubmit(data) {
-  debugger;
   const cardInput = getCardElement(data);
   cardListEl.prepend(cardInput);
   profileAddForm.reset();
@@ -136,8 +134,6 @@ editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidation(validationSettings, profileAddForm);
 addFormValidator.enableValidation();
-
-// addFormValidator.enableValidation();
 
 // event handlers
 function handleProfileEditSubmit(e) {
