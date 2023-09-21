@@ -73,12 +73,14 @@ const cardTemplate = document
   .content.firstElementChild.cloneNode(true);
 
 // popup with form
+// const PopUpWithImage = new PopUpWithImage("#preview-image-modal");
 
 const newCardPopup = new PopupWithForm(
   "#profile-add-modal",
   handleCardFormSubmit
 );
-// newCardPopup.close();
+newCardPopup.setEventListeners();
+newCardPopup.close();
 // newCardPopup.open();
 
 // functions
@@ -98,12 +100,12 @@ function getCardElement(data) {
 
 function closePopup(popup) {
   popup.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeByEscape);
+  // document.removeEventListener("keydown", closeByEscape);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeByEscape);
+  // document.addEventListener("keydown", closeByEscape);
 }
 
 function handleImageClick(data) {
@@ -140,7 +142,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDesciption.textContent = profileDescriptionInput.value;
-  closePopup(profileEditModal);
+  closePopup.close(profileEditModal);
 }
 
 // function handleProfileAddSubmit(e) {
@@ -151,16 +153,16 @@ function handleProfileEditSubmit(e) {
 //   };
 //   const cardElement = getCardElement(cardData);
 //   cardListEl.prepend(cardElement);
-//   closePopup(profileAddModal);
+//   closePopup.close(profileAddModal);
 //   profileAddForm.reset();
 // }
 
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".modal_opened");
-    closePopup(openedPopup);
-  }
-}
+// function closeByEscape(evt) {
+//   if (evt.key === "Escape") {
+//     const openedPopup = document.querySelector(".modal_opened");
+//     closePopup.close(openedPopup);
+//   }
+// }
 
 //event listeners
 profileEditButton.addEventListener("click", () => {
@@ -174,9 +176,6 @@ profileAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   openModal(profileAddModal);
 });
-
-// profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-// profileAddForm.addEventListener("submit", handleCardFormSubmit);
 
 initialCards.forEach((data) => {
   const cardElement = getCardElement(data);
