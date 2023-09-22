@@ -74,16 +74,12 @@ const cardTemplate = document
 
 // const PopUpWithImage = new PopUpWithImage("#preview-image-modal");
 
-function FormCardClose() {
-  const FormClose = new PopupWithForm(".modal__close", FormCardClose);
-  const FormCloseElement = FormClose.addPopupClose();
-  return FormCloseElement;
-}
 // popup with form
 const newCardPopup = new PopupWithForm(
   "#profile-add-modal",
   handleCardFormSubmit
 );
+newCardPopup.setEventListeners();
 
 // functions
 function handleCardFormSubmit(data) {
@@ -98,16 +94,6 @@ function getCardElement(data) {
   const card = new Card(data, "#card-template", handleImageClick);
   const cardElement = card.getView();
   return cardElement;
-}
-
-// function closePopup(popup) {
-//   popup.classList.remove("modal_opened");
-//   document.removeEventListener("keydown", closeByEscape);
-// }
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  // document.addEventListener("keydown", closeByEscape);
 }
 
 function handleImageClick(data) {
@@ -147,24 +133,17 @@ function handleProfileEditSubmit(e) {
   closePopup.close(profileEditModal);
 }
 
-// function closeByEscape(evt) {
-//   if (evt.key === "Escape") {
-//     const openedPopup = document.querySelector(".modal_opened");
-//     closePopup.close(openedPopup);
-//   }
-// }
-
 //event listeners
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDesciption.textContent;
-  openModal(profileEditModal);
+  newCardPopup.open();
 });
 
 // add new card button
 profileAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
-  openModal(profileAddModal);
+  newCardPopup.open();
 });
 
 initialCards.forEach((data) => {
@@ -175,12 +154,10 @@ initialCards.forEach((data) => {
 modals.forEach((modalContainer) => {
   modalContainer.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("modal_opened")) {
-      // closePopup(modalContainer);
-      FormCardClose();
+      newCardPopup.close();
     }
     if (evt.target.classList.contains("modal__close")) {
-      // closePopup(modalContainer);
-      FormCardClose();
+      newCardPopup.close();
     }
   });
 });
