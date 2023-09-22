@@ -73,9 +73,11 @@ const cardTemplate = document
   .content.firstElementChild.cloneNode(true);
 
 // const PopUpWithImage = new PopUpWithImage("#preview-image-modal");
-const newFormClose = new PopupWithForm(".modal__close", FormCardClose);
-function FormCardClose(popup) {
-  newFormClose.close(popup);
+
+function FormCardClose() {
+  const FormClose = new PopupWithForm(".modal__close", FormCardClose);
+  const FormCloseElement = FormClose.addPopupClose();
+  return FormCloseElement;
 }
 // popup with form
 const newCardPopup = new PopupWithForm(
@@ -174,9 +176,11 @@ modals.forEach((modalContainer) => {
   modalContainer.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("modal_opened")) {
       // closePopup(modalContainer);
+      FormCardClose();
     }
     if (evt.target.classList.contains("modal__close")) {
       // closePopup(modalContainer);
+      FormCardClose();
     }
   });
 });
