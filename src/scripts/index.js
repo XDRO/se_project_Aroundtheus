@@ -2,6 +2,7 @@ import Card from "./Card.js";
 import FormValidation from "./FormValidator.js";
 import Popup from "./Popup.js";
 import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 import "../pages/index.css";
 
@@ -38,10 +39,10 @@ const initialCards = [
   },
 ];
 
-const data = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
+// const data = {
+//   name: "Yosemite Valley",
+//   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+// };
 
 // Elements
 const modals = [...document.querySelectorAll(".modal")];
@@ -72,14 +73,16 @@ const cardTemplate = document
   .querySelector("#card-template")
   .content.firstElementChild.cloneNode(true);
 
-// const PopUpWithImage = new PopUpWithImage("#preview-image-modal");
-
 // popup with form
 const newCardPopup = new PopupWithForm(
   "#profile-add-modal",
   handleCardFormSubmit
 );
 newCardPopup.setEventListeners();
+
+// popup with image
+const popupImage = new PopupWithImage("#preview-image-modal");
+popupImage.setEventListeners();
 
 // functions
 function handleCardFormSubmit(data) {
@@ -97,14 +100,7 @@ function getCardElement(data) {
 }
 
 function handleImageClick(data) {
-  const previewImage = document.querySelector(".modal__preview-image");
-  const previewImageTitle = document.querySelector(
-    ".modal__preview-description"
-  );
-  previewImage.src = data.link;
-  previewImage.alt = data.name;
-  previewImageTitle.textContent = data.name;
-  openModal(previewImageModal);
+  popupImage.open(data);
 }
 
 const validationSettings = {
@@ -130,7 +126,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDesciption.textContent = profileDescriptionInput.value;
-  closePopup.close(profileEditModal);
+  newCardPopup.close();
 }
 
 //event listeners
