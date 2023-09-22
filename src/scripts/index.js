@@ -72,16 +72,16 @@ const cardTemplate = document
   .querySelector("#card-template")
   .content.firstElementChild.cloneNode(true);
 
-// popup with form
 // const PopUpWithImage = new PopUpWithImage("#preview-image-modal");
-
+const newFormClose = new PopupWithForm(".modal__close", FormCardClose);
+function FormCardClose(popup) {
+  newFormClose.close(popup);
+}
+// popup with form
 const newCardPopup = new PopupWithForm(
   "#profile-add-modal",
   handleCardFormSubmit
 );
-newCardPopup.setEventListeners();
-newCardPopup.close();
-// newCardPopup.open();
 
 // functions
 function handleCardFormSubmit(data) {
@@ -98,10 +98,10 @@ function getCardElement(data) {
   return cardElement;
 }
 
-function closePopup(popup) {
-  popup.classList.remove("modal_opened");
-  // document.removeEventListener("keydown", closeByEscape);
-}
+// function closePopup(popup) {
+//   popup.classList.remove("modal_opened");
+//   document.removeEventListener("keydown", closeByEscape);
+// }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -145,18 +145,6 @@ function handleProfileEditSubmit(e) {
   closePopup.close(profileEditModal);
 }
 
-// function handleProfileAddSubmit(e) {
-//   e.preventDefault();
-//   const cardData = {
-//     name: addCardModalTitleInput.value,
-//     link: addCardModalLinkInput.value,
-//   };
-//   const cardElement = getCardElement(cardData);
-//   cardListEl.prepend(cardElement);
-//   closePopup.close(profileAddModal);
-//   profileAddForm.reset();
-// }
-
 // function closeByEscape(evt) {
 //   if (evt.key === "Escape") {
 //     const openedPopup = document.querySelector(".modal_opened");
@@ -185,10 +173,10 @@ initialCards.forEach((data) => {
 modals.forEach((modalContainer) => {
   modalContainer.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("modal_opened")) {
-      closePopup(modalContainer);
+      // closePopup(modalContainer);
     }
     if (evt.target.classList.contains("modal__close")) {
-      closePopup(modalContainer);
+      // closePopup(modalContainer);
     }
   });
 });
