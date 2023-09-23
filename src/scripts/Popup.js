@@ -3,7 +3,7 @@ export default class Popup {
     this._popupElement = document.querySelector(popupSelector);
     this._popupClose = this._popupElement.querySelector(".modal__close");
     this._popupImage = document.querySelector(".modal__preview-image");
-    this._editForm = document.querySelector(".modal__form");
+    this._editForm = this._popupElement.querySelector(popupSelector);
     this._editFormButton = document.querySelector(".profile__edit-button");
   }
   open() {
