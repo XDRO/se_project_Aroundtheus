@@ -3,13 +3,10 @@ export default class Popup {
     this._popupElement = document.querySelector(popupSelector);
     this._popupClose = this._popupElement.querySelector(".modal__close");
     this._popupImage = document.querySelector(".modal__preview-image");
-    this._editForm = this._popupElement.querySelector(popupSelector);
-    this._editFormButton = document.querySelector(".profile__edit-button");
   }
   open() {
     //opens popup
     this._popupElement.classList.add("modal_opened");
-    this._editForm.classList.add("modal_opened");
     document.addEventListener("keydown", this._handleEscClose);
   }
   close() {
@@ -30,9 +27,6 @@ export default class Popup {
     });
     // open button for preview image
     this._popupImage.addEventListener("click", () => {
-      this.open();
-    });
-    this._editFormButton.addEventListener("click", () => {
       this.open();
     });
   }

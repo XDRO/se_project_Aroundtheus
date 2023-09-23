@@ -3,6 +3,7 @@ import FormValidation from "./FormValidator.js";
 import Popup from "./Popup.js";
 import PopupWithForm from "./PopupWithForm.js";
 import PopupWithImage from "./PopupWithImage.js";
+import UserInfo from "./UserInfo.js";
 
 import "../pages/index.css";
 
@@ -80,6 +81,12 @@ const newCardPopup = new PopupWithForm(
 );
 newCardPopup.setEventListeners();
 
+const userInfo = new UserInfo(".profile__title", ".profile__description");
+const popupEditForm = new PopupWithForm("#profile-edit-modal", (formData) => {
+  userInfo.setUserInfo(formData);
+  popupEditForm.close();
+});
+popupEditForm.setEventListeners();
 // popup with image
 const popupImage = new PopupWithImage("#preview-image-modal");
 popupImage.setEventListeners();
@@ -131,9 +138,9 @@ function handleProfileEditSubmit(e) {
 
 //event listeners
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDesciption.textContent;
-  newCardPopup.open();
+  const formData = userInfo.getUserInfo();
+  // popupEditForm.setInputValues(formData);
+  popupEditForm.open();
 });
 
 // add new card button
