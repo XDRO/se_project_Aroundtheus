@@ -86,6 +86,7 @@ const popupEditForm = new PopupWithForm("#profile-edit-modal", (formData) => {
   userInfo.setUserInfo(formData);
   popupEditForm.close();
 });
+
 popupEditForm.setEventListeners();
 // popup with image
 const popupImage = new PopupWithImage("#preview-image-modal");
@@ -139,7 +140,7 @@ function handleProfileEditSubmit(e) {
 //event listeners
 profileEditButton.addEventListener("click", () => {
   const formData = userInfo.getUserInfo();
-  // popupEditForm.setInputValues(formData);
+  popupEditForm.setInputValues(formData);
   popupEditForm.open();
 });
 
