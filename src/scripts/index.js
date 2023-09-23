@@ -84,9 +84,6 @@ newCardPopup.setEventListeners();
 const popupImage = new PopupWithImage("#preview-image-modal");
 popupImage.setEventListeners();
 
-// popup edit form
-const popupEditForm = new PopupWithForm("#edit-card-form");
-popupEditForm.setEventListeners();
 // functions
 function handleCardFormSubmit(data) {
   const cardInput = getCardElement(data);
