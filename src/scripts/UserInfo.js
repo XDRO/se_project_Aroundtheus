@@ -1,13 +1,12 @@
 export default class UserInfo {
-  //repsonsible for rendering information from the user
-  constructor(userNameSelector, jobNameSelector) {
-    //object with selectors of two elements
+  //render information from the user
+  constructor(userNameSelector, descriptionNameSelector) {
     this._nameElement = document.querySelector(userNameSelector);
-    this._descriptionElement = document.querySelector(jobNameSelector);
+    this._descriptionElement = document.querySelector(descriptionNameSelector);
   }
   getUserInfo() {
     const userInput = {
-      title: this._nameElement.textContent,
+      name: this._nameElement.textContent,
       description: this._descriptionElement.textContent,
     };
     return userInput;
@@ -15,6 +14,6 @@ export default class UserInfo {
 
   setUserInfo(data) {
     this._nameElement.textContent = data.name;
-    this._descriptionElement.textContent = data.job;
+    this._descriptionElement.textContent = data.description;
   }
 }

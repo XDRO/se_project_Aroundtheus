@@ -80,13 +80,12 @@ const newCardPopup = new PopupWithForm(
   handleCardFormSubmit
 );
 newCardPopup.setEventListeners();
-
+// edit popup form
 const userInfo = new UserInfo(".profile__title", ".profile__description");
 const popupEditForm = new PopupWithForm("#profile-edit-modal", (formData) => {
   userInfo.setUserInfo(formData);
   popupEditForm.close();
 });
-
 popupEditForm.setEventListeners();
 // popup with image
 const popupImage = new PopupWithImage("#preview-image-modal");
@@ -159,9 +158,11 @@ modals.forEach((modalContainer) => {
   modalContainer.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("modal_opened")) {
       newCardPopup.close();
+      popupEditForm.close();
     }
     if (evt.target.classList.contains("modal__close")) {
       newCardPopup.close();
+      popupEditForm.close();
     }
   });
 });
