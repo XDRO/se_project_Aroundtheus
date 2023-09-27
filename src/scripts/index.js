@@ -152,10 +152,12 @@ modals.forEach((modalContainer) => {
     if (evt.target.classList.contains("modal_opened")) {
       newCardPopup.close();
       popupEditForm.close();
+      popupImage.close();
     }
     if (evt.target.classList.contains("modal__close")) {
       newCardPopup.close();
       popupEditForm.close();
+      popupImage.close();
     }
   });
 });

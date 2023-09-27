@@ -8,7 +8,9 @@ export default class PopupWithImage extends Popup {
     );
   }
   setEventListeners() {
-    super.setEventListeners();
+    this._popupImage.addEventListener("click", () => {
+      this.open();
+    });
   }
   open(data) {
     if (data) {

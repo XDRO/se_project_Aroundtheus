@@ -25,9 +25,5 @@ export default class Popup {
     this._popupClose.addEventListener("click", () => {
       this.close();
     });
-    // open button for preview image
-    this._popupImage.addEventListener("click", () => {
-      this.open();
-    });
   }
 }
