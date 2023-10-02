@@ -38,6 +38,12 @@ export default class FormValidation {
     this._submitButton.disabled = false;
   }
 
+  resetValidation() {
+    this._inputElements.every((inputEl) =>
+      inputEl.classList.remove(this._errorClass)
+    );
+  }
+
   _checkInputValidity(formEls, inputEl) {
     if (!inputEl.validity.valid) {
       this._showInputError(
@@ -54,6 +60,11 @@ export default class FormValidation {
       inputEl.addEventListener("input", () => {
         this._checkInputValidity(this._form, inputEl);
         this.toggleButtonState();
+      });
+    });
+    this._inputElements.forEach((formEls) => {
+      formEls.addEventListener("close", () => {
+        this.resetValidation();
       });
     });
   }
