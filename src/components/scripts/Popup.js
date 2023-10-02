@@ -5,6 +5,7 @@ export default class Popup {
     this._popupElement = document.querySelector(popupSelector);
     this._popupClose = this._popupElement.querySelector(".modal__close");
     this._popupImage = document.querySelector(".modal__preview-image");
+    // this._modalContainers = document.querySelectorAll(".modal");
   }
   open() {
     //opens popup
@@ -27,5 +28,15 @@ export default class Popup {
     this._popupClose.addEventListener("click", () => {
       this.close();
     });
+    this._popupElement.addEventListener("mousedown", (evt) => {
+      if (evt.target.classList.contains("modal_opened")) {
+        this._popupElement.close();
+      }
+      if (evt.target.classList.contains("modal__close")) {
+        this._popupElement.close();
+      }
+    });
   }
 }
+
+// console.log(this._modalContainers);

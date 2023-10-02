@@ -87,17 +87,17 @@ initialCards.forEach((data) => {
   DOM.cardListEl.prepend(cardElement);
 });
 
-DOM.modals.forEach((modalContainer) => {
-  modalContainer.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("modal_opened")) {
-      newCardPopup.close();
-      popupEditForm.close();
-      popupImage.close();
-    }
-    if (evt.target.classList.contains("modal__close")) {
-      newCardPopup.close();
-      popupEditForm.close();
-      popupImage.close();
-    }
-  });
-});
+// DOM.modals.forEach((modalContainer) => {
+//   modalContainer.addEventListener("mousedown", (evt) => {
+//     if (evt.target.classList.contains("modal_opened")) {
+//       newCardPopup.close();
+//       popupEditForm.close();
+//       popupImage.close();
+//     }
+//     if (evt.target.classList.contains("modal__close")) {
+//       newCardPopup.close();
+//       popupEditForm.close();
+//       popupImage.close();
+//     }
+//   });
+// });
