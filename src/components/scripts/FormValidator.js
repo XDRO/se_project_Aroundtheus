@@ -62,11 +62,6 @@ export default class FormValidation {
         this.toggleButtonState();
       });
     });
-    this._inputElements.forEach((formEls) => {
-      formEls.addEventListener("close", () => {
-        this.resetValidation();
-      });
-    });
   }
 
   enableValidation() {
