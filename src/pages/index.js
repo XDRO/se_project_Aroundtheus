@@ -61,6 +61,7 @@ const editFormValidator = new FormValidation(
   DOM.profileEditForm
 );
 editFormValidator.enableValidation();
+// editFormValidator.resetValidation();
 
 const addFormValidator = new FormValidation(
   validationSettings,
