@@ -39,7 +39,6 @@ const section = new Section({
   renderer: (item) => {
     const cardElement = createCard(item);
     section.getView(cardElement);
-    return cardElement;
   },
 });
 
@@ -47,9 +46,7 @@ const section = new Section({
 function handleCardFormSubmit(data) {
   const cardInput = createCard(data);
   DOM.cardListEl.prepend(cardInput);
-  DOM.profileAddForm.reset();
   newCardPopup.close();
-  return cardInput;
 }
 
 function handleImageClick(data) {
@@ -86,18 +83,3 @@ initialCards.forEach((data) => {
   const cardElement = createCard(data);
   DOM.cardListEl.prepend(cardElement);
 });
-
-// DOM.modals.forEach((modalContainer) => {
-//   modalContainer.addEventListener("mousedown", (evt) => {
-//     if (evt.target.classList.contains("modal_opened")) {
-//       newCardPopup.close();
-//       popupEditForm.close();
-//       popupImage.close();
-//     }
-//     if (evt.target.classList.contains("modal__close")) {
-//       newCardPopup.close();
-//       popupEditForm.close();
-//       popupImage.close();
-//     }
-//   });
-// });

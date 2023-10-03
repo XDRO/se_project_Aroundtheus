@@ -7,11 +7,6 @@ export default class PopupWithImage extends Popup {
       ".modal__preview-description"
     );
   }
-  setEventListeners() {
-    this._popupImage.addEventListener("click", () => {
-      this.open();
-    });
-  }
   open(data) {
     if (data) {
       this._popupImage.src = data.link;
@@ -19,8 +14,5 @@ export default class PopupWithImage extends Popup {
       this._popupImageDescription.textContent = data.name;
     }
     super.open();
-  }
-  close() {
-    super.close();
   }
 }
