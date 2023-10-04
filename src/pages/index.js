@@ -38,9 +38,10 @@ const section = new Section({
   items: initialCards,
   renderer: (item) => {
     const cardElement = createCard(item);
-    section.getView(cardElement);
+    section.addItem(cardElement);
   },
 });
+section.renderItems();
 
 // functions
 function handleCardFormSubmit(data) {
@@ -79,7 +80,7 @@ DOM.profileAddButton.addEventListener("click", () => {
   newCardPopup.open();
 });
 
-initialCards.forEach((data) => {
-  const cardElement = createCard(data);
-  DOM.cardListEl.prepend(cardElement);
-});
+// initialCards.forEach((data) => {
+//   const cardElement = createCard(data);
+//   DOM.cardListEl.prepend(cardElement);
+// });
