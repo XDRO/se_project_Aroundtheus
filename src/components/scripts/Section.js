@@ -2,7 +2,7 @@ export default class Section {
   constructor({ items, renderer }, container) {
     this._items = items;
     this._renderer = renderer;
-    this._container = document.querySelectorAll(".modal__container");
+    this._container = document.querySelector(".modal__container");
   }
   renderItems() {
     this._items.forEach((item) => {

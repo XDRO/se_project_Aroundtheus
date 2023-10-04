@@ -4,7 +4,6 @@ export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
     this._popupClose = this._popupElement.querySelector(".modal__close");
-    // this._modalContainers = document.querySelectorAll(".modal");
   }
   open() {
     //opens popup
@@ -37,5 +36,3 @@ export default class Popup {
     });
   }
 }
-
-// console.log(this._modalContainers);
