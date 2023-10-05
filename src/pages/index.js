@@ -34,13 +34,16 @@ function createCard(item) {
   return cardElement.getView();
 }
 
-const section = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const cardElement = createCard(item);
-    section.addItem(cardElement);
+const section = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const cardElement = createCard(item);
+      section.addItem(cardElement);
+    },
   },
-});
+  ".cards__list"
+);
 section.renderItems();
 
 // functions
