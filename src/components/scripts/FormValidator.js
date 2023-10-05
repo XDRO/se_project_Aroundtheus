@@ -38,10 +38,6 @@ export default class FormValidation {
     this._submitButton.disabled = false;
   }
 
-  // resetValidation() {
-  //   this._inputElements.every((inputEl) => inputEl.reset());
-  // }
-
   _checkInputValidity(formEls, inputEl) {
     if (!inputEl.validity.valid) {
       this._showInputError(

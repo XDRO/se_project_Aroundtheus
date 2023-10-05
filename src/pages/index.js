@@ -47,9 +47,10 @@ const section = new Section(
 section.renderItems();
 
 // functions
+
 function handleCardFormSubmit(data) {
   const cardInput = createCard(data);
-  DOM.cardListEl.prepend(cardInput);
+  section.addItem(cardInput);
   newCardPopup.close();
 }
 
@@ -62,7 +63,6 @@ const editFormValidator = new FormValidation(
   DOM.profileEditForm
 );
 editFormValidator.enableValidation();
-// editFormValidator.resetValidation();
 
 const addFormValidator = new FormValidation(
   validationSettings,
@@ -82,8 +82,3 @@ DOM.profileAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newCardPopup.open();
 });
-
-// initialCards.forEach((data) => {
-//   const cardElement = createCard(data);
-//   DOM.cardListEl.prepend(cardElement);
-// });
