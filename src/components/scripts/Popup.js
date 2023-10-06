@@ -30,9 +30,6 @@ export default class Popup {
       if (evt.target.classList.contains("modal_opened")) {
         this.close();
       }
-      if (evt.target.classList.contains("modal__close")) {
-        this.close();
-      }
     });
   }
 }
