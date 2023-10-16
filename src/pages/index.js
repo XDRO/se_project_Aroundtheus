@@ -1,6 +1,5 @@
 import Card from "../components/scripts/Card.js";
 import FormValidation from "../components/scripts/FormValidator.js";
-// import Popup from "../scripts/Popup.js";
 import PopupWithForm from "../components/scripts/PopupWithForm.js";
 import PopupWithImage from "../components/scripts/PopupWithImage.js";
 import UserInfo from "../components/scripts/UserInfo.js";
@@ -8,8 +7,26 @@ import Section from "../components/scripts/Section.js";
 import * as DOM from "../utils/constants.js";
 import { validationSettings } from "../utils/utils.js";
 import { initialCards } from "../utils/utils.js";
-
+import Api from "../components/scripts/Api.js";
 import "../pages/index.css";
+
+// Api
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "Bearer d081ca18-dd96-4ff1-863a-c195fbcda74a",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getInitialCards()
+  .then((result) => {
+    // process the result
+  })
+  .catch((err) => {
+    console.error(err); // log the error to the console
+  });
 
 // popup with form
 const newCardPopup = new PopupWithForm(
@@ -82,3 +99,7 @@ DOM.profileAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newCardPopup.open();
 });
+
+// fetch("https://jsonplaceholder.typicode.com/todos/1")
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
