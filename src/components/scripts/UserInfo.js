@@ -14,6 +14,6 @@ export default class UserInfo {
 
   setUserInfo(data) {
     this._nameElement.textContent = data.name;
-    this._descriptionElement.textContent = data.description;
+    this._descriptionElement.textContent = data.about;
   }
 }
