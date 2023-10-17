@@ -14,18 +14,43 @@ import "../pages/index.css";
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "Bearer d081ca18-dd96-4ff1-863a-c195fbcda74a",
+    authorization: "d081ca18-dd96-4ff1-863a-c195fbcda74a",
     "Content-Type": "application/json",
   },
 });
 
-api
-  .getInitialCards()
-  .then((result) => {
-    // process the result
+// api
+//   .getInitialCards()
+//   .then((result) => {
+//     // process the result
+//   })
+//   .catch((err) => {
+//     console.error(err); // log the error to the console
+//   });
+
+// function createCard({ name, link }) {
+//   return new Card({ name, link }, "#card-template").getView();
+// }
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([cardData, formData]) => {
+    const section = new Section(
+      {
+        items: cardData,
+        renderer: (item) => {
+          const cardElement = createCard(item);
+          section.addItem(cardElement);
+        },
+      },
+      ".cards__list"
+    );
+    section.renderItems();
+
+    userInfo.setUserInfo(formData);
+    // userInfo.setAvatar(formData.avatar);
   })
   .catch((err) => {
-    console.error(err); // log the error to the console
+    console.error(err);
   });
 
 // popup with form
@@ -99,7 +124,3 @@ DOM.profileAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newCardPopup.open();
 });
-
-// fetch("https://jsonplaceholder.typicode.com/todos/1")
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));

@@ -18,9 +18,19 @@ export default class Api {
     }).then(this.renderResult);
   }
 
-  getUserInfo() {}
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    }).then(this.renderResult);
+  }
 
-  postNewCards() {}
+  postNewCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      body: JSON.stringify(name, link),
+      headers: this._headers,
+    }).then(this.renderResult);
+  }
 
   renderError() {}
 
