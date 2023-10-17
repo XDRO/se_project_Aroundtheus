@@ -19,19 +19,6 @@ const api = new Api({
   },
 });
 
-// api
-//   .getInitialCards()
-//   .then((result) => {
-//     // process the result
-//   })
-//   .catch((err) => {
-//     console.error(err); // log the error to the console
-//   });
-
-// function createCard({ name, link }) {
-//   return new Card({ name, link }, "#card-template").getView();
-// }
-
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cardData, formData]) => {
     const section = new Section(
@@ -59,6 +46,7 @@ const newCardPopup = new PopupWithForm(
   handleCardFormSubmit
 );
 newCardPopup.setEventListeners();
+
 // edit popup form
 const userInfo = new UserInfo(".profile__title", ".profile__description");
 const popupEditForm = new PopupWithForm("#profile-edit-modal", (formData) => {
@@ -66,6 +54,7 @@ const popupEditForm = new PopupWithForm("#profile-edit-modal", (formData) => {
   popupEditForm.close();
 });
 popupEditForm.setEventListeners();
+
 // popup with image
 const popupImage = new PopupWithImage("#preview-image-modal");
 popupImage.setEventListeners();
@@ -124,3 +113,17 @@ DOM.profileAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newCardPopup.open();
 });
+
+// i believe that I will need this later
+// api
+//   .getInitialCards()
+//   .then((result) => {
+//     // process the result
+//   })
+//   .catch((err) => {
+//     console.error(err); // log the error to the console
+//   });
+
+// function createCard({ name, link }) {
+//   return new Card({ name, link }, "#card-template").getView();
+// }
