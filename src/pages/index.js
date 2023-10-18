@@ -47,8 +47,6 @@ function postNewCard({ name, link, likeCard, _id }) {
     { name, link, likeCard, _id },
     "#card-template",
     handleImageClick
-    // handleTrashButtonClick,
-    // handleHeartButton
   ).getView();
 }
 
@@ -109,7 +107,7 @@ DOM.profileAddButton.addEventListener("click", () => {
 });
 
 // section
-// function createCar(item) {
+// function createCard(item) {
 //   const cardElement = new Card(item, "#card-template", handleImageClick);
 //   return cardElement.getView();
 // }
@@ -118,7 +116,7 @@ DOM.profileAddButton.addEventListener("click", () => {
 //   {
 //     items: initialCards,
 //     renderer: (item) => {
-//       const cardElement = createCar(item);
+//       const cardElement = createCard(item);
 //       section.addItem(cardElement);
 //     },
 //   },
