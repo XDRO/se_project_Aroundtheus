@@ -19,10 +19,11 @@ const api = new Api({
   },
 });
 
+let section = 0;
+
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cardData, formData]) => {
-    // console.log(cardData);
-    const section = new Section(
+    section = new Section(
       {
         items: cardData,
         renderer: (item) => {
@@ -40,6 +41,16 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   .catch((err) => {
     console.error(err);
   });
+
+function createCard({ name, link, likeCard, _id }) {
+  return new Card(
+    { name, link, likeCard, _id },
+    "#card-template",
+    handleImageClick,
+    handleTrashButtonClick,
+    handleHeartButton
+  ).getView();
+}
 
 // popup with form
 const newCardPopup = new PopupWithForm(
@@ -61,10 +72,10 @@ const popupImage = new PopupWithImage("#preview-image-modal");
 popupImage.setEventListeners();
 
 // section
-function createCard(item) {
-  const cardElement = new Card(item, "#card-template", handleImageClick);
-  return cardElement.getView();
-}
+// function createCard(item) {
+//   const cardElement = new Card(item, "#card-template", handleImageClick);
+//   return cardElement.getView();
+// }
 
 // const section = new Section(
 //   {
@@ -116,15 +127,3 @@ DOM.profileAddButton.addEventListener("click", () => {
 });
 
 // i believe that I will need this later
-// api
-//   .getInitialCards()
-//   .then((result) => {
-//     // process the result
-//   })
-//   .catch((err) => {
-//     console.error(err); // log the error to the console
-//   });
-
-// function createCard({ name, link }) {
-//   return new Card({ name, link }, "#card-template").getView();
-// }
