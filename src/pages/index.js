@@ -27,7 +27,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
       {
         items: cardData,
         renderer: (item) => {
-          const cardElement = postNewCard(item);
+          const cardElement = createCard(item);
           section.addItem(cardElement);
         },
       },
@@ -42,14 +42,18 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     console.error(err);
   });
 
-function postNewCard({ name, link, likeCard, _id }) {
-  return new Card(
-    { name, link, likeCard, _id },
-    "#card-template",
-    handleImageClick
-  ).getView();
+function handleDeleteCardClick(item) {
+  api.deleteCard(
+    item
+      .getId()
+      .then(() => {
+        item.removeCard();
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      })
+  );
 }
-
 // popup with form
 const newCardPopup = new PopupWithForm(
   "#profile-add-modal",
@@ -71,10 +75,23 @@ popupImage.setEventListeners();
 
 // functions
 
+function createCard(item, _id) {
+  const cardElement = new Card(
+    item,
+    _id,
+    "#card-template",
+    handleImageClick,
+    handleDeleteCardClick
+  );
+  return cardElement.getView();
+}
+
 function handleCardFormSubmit(data) {
-  const cardInput = postNewCard(data);
-  section.addItem(cardInput);
-  newCardPopup.close();
+  api.postNewCard(data).then((card) => {
+    const cardInput = createCard(card);
+    section.addItem(cardInput);
+    newCardPopup.close();
+  });
 }
 
 function handleImageClick(data) {
@@ -107,10 +124,6 @@ DOM.profileAddButton.addEventListener("click", () => {
 });
 
 // section
-// function createCard(item) {
-//   const cardElement = new Card(item, "#card-template", handleImageClick);
-//   return cardElement.getView();
-// }
 
 // const section = new Section(
 //   {

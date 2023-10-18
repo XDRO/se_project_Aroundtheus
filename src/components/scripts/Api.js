@@ -24,10 +24,17 @@ export default class Api {
     }).then(this.renderResult);
   }
 
-  postNewCard({ name, link }) {
+  postNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      body: JSON.stringify(name, link),
+      body: JSON.stringify(data),
+      headers: this._headers,
+    }).then(this.renderResult);
+  }
+
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
       headers: this._headers,
     }).then(this.renderResult);
   }
@@ -36,9 +43,7 @@ export default class Api {
 
   editProfile() {}
 
-  deleteCard() {}
-
-  likeCard() {}
+  isLiked() {}
 
   unlikeCard() {}
 
