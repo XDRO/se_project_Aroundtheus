@@ -27,7 +27,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
       {
         items: cardData,
         renderer: (item) => {
-          const cardElement = createCard(item);
+          const cardElement = postNewCard(item);
           section.addItem(cardElement);
         },
       },
@@ -42,13 +42,13 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     console.error(err);
   });
 
-function createCard({ name, link, likeCard, _id }) {
+function postNewCard({ name, link, likeCard, _id }) {
   return new Card(
     { name, link, likeCard, _id },
     "#card-template",
-    handleImageClick,
-    handleTrashButtonClick,
-    handleHeartButton
+    handleImageClick
+    // handleTrashButtonClick,
+    // handleHeartButton
   ).getView();
 }
 
@@ -71,28 +71,10 @@ popupEditForm.setEventListeners();
 const popupImage = new PopupWithImage("#preview-image-modal");
 popupImage.setEventListeners();
 
-// section
-// function createCard(item) {
-//   const cardElement = new Card(item, "#card-template", handleImageClick);
-//   return cardElement.getView();
-// }
-
-// const section = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (item) => {
-//       const cardElement = createCard(item);
-//       section.addItem(cardElement);
-//     },
-//   },
-//   ".cards__list"
-// );
-// section.renderItems();
-
 // functions
 
 function handleCardFormSubmit(data) {
-  const cardInput = createCard(data);
+  const cardInput = postNewCard(data);
   section.addItem(cardInput);
   newCardPopup.close();
 }
@@ -126,4 +108,20 @@ DOM.profileAddButton.addEventListener("click", () => {
   newCardPopup.open();
 });
 
-// i believe that I will need this later
+// section
+// function createCar(item) {
+//   const cardElement = new Card(item, "#card-template", handleImageClick);
+//   return cardElement.getView();
+// }
+
+// const section = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (item) => {
+//       const cardElement = createCar(item);
+//       section.addItem(cardElement);
+//     },
+//   },
+//   ".cards__list"
+// );
+// section.renderItems();
