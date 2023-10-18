@@ -21,6 +21,7 @@ const api = new Api({
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cardData, formData]) => {
+    // console.log(cardData);
     const section = new Section(
       {
         items: cardData,
@@ -65,17 +66,17 @@ function createCard(item) {
   return cardElement.getView();
 }
 
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const cardElement = createCard(item);
-      section.addItem(cardElement);
-    },
-  },
-  ".cards__list"
-);
-section.renderItems();
+// const section = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (item) => {
+//       const cardElement = createCard(item);
+//       section.addItem(cardElement);
+//     },
+//   },
+//   ".cards__list"
+// );
+// section.renderItems();
 
 // functions
 
