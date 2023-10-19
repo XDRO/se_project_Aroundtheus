@@ -43,16 +43,14 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   });
 
 function handleDeleteCardClick(item) {
-  api.deleteCard(
-    item
-      .getId()
-      .then(() => {
-        item.removeCard();
-      })
-      .catch((err) => {
-        console.log("Error:", err);
-      })
-  );
+  api
+    .deleteCard(item.getId())
+    .then(() => {
+      item.removeCard();
+    })
+    .catch((err) => {
+      console.log("Error:", err);
+    });
 }
 // popup with form
 const newCardPopup = new PopupWithForm(
