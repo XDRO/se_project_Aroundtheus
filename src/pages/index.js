@@ -78,7 +78,6 @@ popupImage.setEventListeners();
 function createCard(item, _id) {
   const cardElement = new Card(
     item,
-    _id,
     "#card-template",
     handleImageClick,
     handleDeleteCardClick
