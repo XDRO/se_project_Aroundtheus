@@ -52,10 +52,10 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  // handleDeleteCardClick() {
-  //   this._cardElement.remove();
-  //   this._cardElement = null;
-  // }
+  handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
 
   _getElement() {
     return document

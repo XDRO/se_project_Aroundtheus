@@ -46,7 +46,7 @@ function handleDeleteCardClick(item) {
   api
     .deleteCard(item.getId())
     .then(() => {
-      item.removeCard();
+      item.handleDeleteCard();
     })
     .catch((err) => {
       console.log("Error:", err);
