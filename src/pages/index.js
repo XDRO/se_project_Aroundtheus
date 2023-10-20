@@ -8,6 +8,7 @@ import * as DOM from "../utils/constants.js";
 import { validationSettings } from "../utils/utils.js";
 import { initialCards } from "../utils/utils.js";
 import Api from "../components/scripts/Api.js";
+import ConfirmationOnClick from "../components/scripts/popupWithConfirmation";
 import "../pages/index.css";
 
 // Api
@@ -43,6 +44,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   });
 
 function handleDeleteCardClick(item) {
+  popupWithConfirmation.setSubmitCall();
+  popupWithConfirmation.deleteing(true);
   api
     .deleteCard(item.getId())
     .then(() => {
@@ -52,6 +55,12 @@ function handleDeleteCardClick(item) {
       console.log("Error:", err);
     });
 }
+
+const popupWithConfirmation = new ConfirmationOnClick(
+  "#modal-delete-confirmation"
+);
+popupWithConfirmation.setEventListeners();
+
 // popup with form
 const newCardPopup = new PopupWithForm(
   "#profile-add-modal",

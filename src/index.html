@@ -140,13 +140,26 @@
           class="modal__close modal__preview-close"
           id="preview-image-close-modal"
         ></button>
-        <form action="#" class="modal__form js-modal-form"></form>
       </div>
     </div>
 
     <!-- EDIT PROFILE AVATAR MODAL-->
 
     <!-- CONFIRMATION MODAL-->
+    <div class="modal" id="modal-delete-confirmation">
+      <div class="modal__container modal__delete-container">
+        <button class="modal__close modal__close-button_delete-form"></button>
+        <p class="modal__heading">Are you sure?</p>
+        <button
+          class="modal__button modal__button-delete_save"
+          type="submit"
+          id="modal-delete-onSave"
+        >
+          <span class="modal__button-text">Save</span>
+          <form class="modal__form js-modal-form" action="#"></form>
+        </button>
+      </div>
+    </div>
 
     <!-- Card Template -->
     <template id="card-template">
@@ -159,7 +172,5 @@
         </div>
       </li>
     </template>
-    <!-- js script links -->
-    <!-- <script src="./pages/index.js" type="module"></script> -->
   </body>
 </html>
