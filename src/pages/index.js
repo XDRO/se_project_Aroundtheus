@@ -80,6 +80,9 @@ popupEditForm.setEventListeners();
 const popupImage = new PopupWithImage("#preview-image-modal");
 popupImage.setEventListeners();
 
+function handleImageClick(data) {
+  popupImage.open(data);
+}
 // functions
 
 function createCard(item, _id) {
@@ -98,10 +101,6 @@ function handleCardFormSubmit(data) {
     section.addItem(cardInput);
     newCardPopup.close();
   });
-}
-
-function handleImageClick(data) {
-  popupImage.open(data);
 }
 
 const editFormValidator = new FormValidation(

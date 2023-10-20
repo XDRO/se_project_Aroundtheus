@@ -1,7 +1,7 @@
 import PopupWithForm from "./PopupWithForm";
 
 export default class Popup {
-  constructor({ popupSelector }) {
+  constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
     this._popupClose = this._popupElement.querySelector(".modal__close");
   }

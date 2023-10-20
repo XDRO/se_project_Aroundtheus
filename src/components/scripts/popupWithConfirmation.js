@@ -1,7 +1,7 @@
 import Popup from "./Popup";
 
 export default class ConfirmationOnClick extends Popup {
-  constructor(popupSelector) {
+  constructor({ popupSelector }) {
     super(popupSelector);
     this._deleteConfirmPopup = this._popupElement.querySelector(".modal__form");
     this._deleteConfirmForm = document.querySelector(
