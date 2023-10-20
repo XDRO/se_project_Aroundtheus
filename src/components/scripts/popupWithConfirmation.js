@@ -20,7 +20,7 @@ export default class ConfirmationOnClick extends Popup {
     super.setEventListeners();
     this._deleteConfirmPopup.addEventListeners("submit", (e) => {
       e.preventDefualt();
-      this._hanldeFormSubmit(e);
+      this._handleFormSubmit(e);
     });
   }
 
@@ -33,6 +33,8 @@ export default class ConfirmationOnClick extends Popup {
   };
 
   setSubmitCall(callback) {
-    this._hanldeFormSubmit(callback);
+    this._handleFormSubmit(callback);
   }
+
+  _handleFormSubmit() {}
 }

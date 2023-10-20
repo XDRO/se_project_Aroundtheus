@@ -44,8 +44,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   });
 
 function handleDeleteCardClick(item) {
-  // popupWithConfirmation.setSubmitCall();
-  // popupWithConfirmation.deleteing(true);
+  popupWithConfirmation.setSubmitCall();
+  popupWithConfirmation.deleteing(true);
   api
     .deleteCard(item.getId())
     .then(() => {
@@ -56,10 +56,10 @@ function handleDeleteCardClick(item) {
     });
 }
 
-// const popupWithConfirmation = new ConfirmationOnClick(
-//   "#modal-delete-confirmation"
-// );
-// popupWithConfirmation.setEventListeners();
+const popupWithConfirmation = new ConfirmationOnClick(
+  "#modal-delete-confirmation"
+);
+popupWithConfirmation.setEventListeners();
 
 // popup with form
 const newCardPopup = new PopupWithForm(
