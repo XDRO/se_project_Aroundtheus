@@ -44,8 +44,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   });
 
 function handleDeleteCardClick(item) {
-  popupWithConfirmation.setSubmitCall();
-  popupWithConfirmation.deleteing(true);
+  // popupWithConfirmation.setSubmitCall();
+  // popupWithConfirmation.deleteing(true);
   api
     .deleteCard(item.getId())
     .then(() => {
@@ -56,10 +56,10 @@ function handleDeleteCardClick(item) {
     });
 }
 
-const popupWithConfirmation = new ConfirmationOnClick(
-  "#modal-delete-confirmation"
-);
-popupWithConfirmation.setEventListeners();
+// const popupWithConfirmation = new ConfirmationOnClick(
+//   "#modal-delete-confirmation"
+// );
+// popupWithConfirmation.setEventListeners();
 
 // popup with form
 const newCardPopup = new PopupWithForm(
@@ -77,10 +77,10 @@ const popupEditForm = new PopupWithForm("#profile-edit-modal", (formData) => {
 popupEditForm.setEventListeners();
 
 // popup with image
-const popupImage = new PopupWithImage("#preview-image-modal");
-popupImage.setEventListeners();
 
 function handleImageClick(data) {
+  const popupImage = new PopupWithImage("#preview-image-modal");
+  popupImage.setEventListeners();
   popupImage.open(data);
 }
 // functions
@@ -127,17 +127,3 @@ DOM.profileAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newCardPopup.open();
 });
-
-// section
-
-// const section = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (item) => {
-//       const cardElement = createCard(item);
-//       section.addItem(cardElement);
-//     },
-//   },
-//   ".cards__list"
-// );
-// section.renderItems();
