@@ -7,10 +7,10 @@ export default class ConfirmationOnClick extends Popup {
     this._deleteConfirmForm = document.querySelector(
       "#modal-delete-confirmation"
     );
-    this._deleteFormCloseButton = this._popupElement(
+    this._deleteFormCloseButton = this._popupElement.querySelector(
       ".modal__close-button_delete-form"
     );
-    this._deleteConfirmSubmit = this._popupElement(
+    this._deleteConfirmSubmit = this._popupElement.querySelector(
       ".modal__button-delete_save"
     );
     this._deleteSubmitConfimText = this._deleteConfirmSubmit.textContent;
@@ -33,8 +33,6 @@ export default class ConfirmationOnClick extends Popup {
   };
 
   setSubmitCall(callback) {
-    this._handleFormSubmit(callback);
+    this._handleFormSubmit = callback;
   }
-
-  _handleFormSubmit() {}
 }

@@ -56,9 +56,9 @@ function handleDeleteCardClick(item) {
     });
 }
 
-const popupWithConfirmation = new ConfirmationOnClick(
-  "#modal-delete-confirmation"
-);
+const popupWithConfirmation = new ConfirmationOnClick({
+  popupSelector: "#modal-delete-confirmation",
+});
 popupWithConfirmation.setEventListeners();
 
 // popup with form
