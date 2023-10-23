@@ -18,13 +18,13 @@ export default class ConfirmationOnClick extends Popup {
     });
   }
 
-  deleteing = (deleteing, deleteingText = "Deleteing...") => {
-    if (deleteing) {
-      this._deleteConfirmSubmit.textContent = deleteingText;
-    } else {
-      this._deleteConfirmSubmit.textContent = this._deleteSubmitConfimText;
-    }
-  };
+  // deleteing = (deleteing, deleteingText = "Deleteing...") => {
+  //   if (deleteing) {
+  //     this._deleteConfirmSubmit.textContent = deleteingText;
+  //   } else {
+  //     this._deleteConfirmSubmit.textContent = this._deleteSubmitConfimText;
+  //   }
+  // };
 
   setSubmitCall(callback) {
     this._handleFormSubmit = callback;
