@@ -10,23 +10,16 @@ export default class ConfirmationOnClick extends Popup {
     this._deleteConfirmContainer = this._popupElement.querySelector(
       ".modal__delete-container"
     );
-    console.log(this._deleteConfirmContainer);
     this._deleteFormCloseButton = this._popupElement.querySelector(
       ".modal__close-button_delete-form"
     );
     this._deleteConfirmSubmit = this._popupElement.querySelector(
       ".modal__button-delete_save"
     );
-    this._deleteButton = document.querySelector(".card__delete-button");
-    console.log(this._deleteButton);
     this._deleteSubmitConfimText = this._deleteConfirmSubmit.textContent;
   }
 
-  open() {
-    this._deleteButton.addEventListener("click", (e) => {
-      this._deleteButton.classList.add("modal_opened");
-    });
-  }
+  open() {}
 
   setEventListeners() {
     this.open();

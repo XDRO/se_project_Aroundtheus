@@ -20,10 +20,11 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
-    //".card__delete-button"
+    //".card__delete-button";
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => this._handleDeleteCardClick(this));
+
     //".card__image"
     this._cardElement
       .querySelector(".card__image")
