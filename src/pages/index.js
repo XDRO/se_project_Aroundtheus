@@ -44,27 +44,30 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   });
 
 function handleDeleteCardClick(item) {
-  popupWithConfirmation.setSubmitCall();
-  popupWithConfirmation.deleteing(true);
-  api
-    .deleteCard(item.getId())
-    .then(() => {
-      confirmation();
-      item.handleDeleteCard();
-    })
-    .catch((err) => {
-      console.log("Error:", err);
-    });
+  popupWithConfirmation.open();
+  popupWithConfirmation.setSubmitCall(() => {
+    console.log("hello");
+  });
+  // popupWithConfirmation.deleteing(true);
+  // api
+  //   .deleteCard(item.getId())
+  //   .then(() => {
+  //     // confirmation();
+  //     item.handleDeleteCard();
+  //   })
+  //   .catch((err) => {
+  //     console.log("Error:", err);
+  //   });
 }
 
-function confirmation() {
-  let result = confirm("Are you sure?");
-  if (result === ".modal__button-delete_save") {
-    handleDeleteCardClick();
-  } else {
-    (result !== ".modal__buton-delete_save") != handleDeleteCardClick();
-  }
-}
+// function confirmation() {
+//   let result = confirm("Are you sure?");
+//   if (result === ".modal__button-delete_save") {
+//     handleDeleteCardClick();
+//   } else {
+//     (result !== ".modal__buton-delete_save") != handleDeleteCardClick();
+//   }
+// }
 
 const popupWithConfirmation = new ConfirmationOnClick({
   popupSelector: "#modal-delete-confirmation",
