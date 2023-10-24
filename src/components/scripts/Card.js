@@ -9,7 +9,7 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._id = _id;
-    this._isLiked = isLiked;
+    this.isLiked = isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteCardClick = handleDeleteCardClick;
@@ -35,6 +35,7 @@ export default class Card {
 
   setLikeStatus(isLiked) {
     this.isLiked = isLiked;
+    console.log(this.isLiked);
     this._renderLikes();
   }
 
@@ -65,10 +66,13 @@ export default class Card {
     );
     const cardImage = this._cardElement.querySelector(".card__image");
     this._likeButton = this._cardElement.querySelector(".card__like-button");
+
     cardImage.src = this._link;
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
+
     this._setEventListeners();
+    this._renderLikes();
     return this._cardElement;
   }
 
