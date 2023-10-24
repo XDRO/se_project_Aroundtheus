@@ -16,16 +16,9 @@ export default class Card {
     this._handleImageLike = handleImageLike;
   }
   _setEventListeners() {
-    //".card__like-button"
-    // this._cardElement
-    //   .querySelector(".card__like-button")
-    //   .addEventListener("click", () => {
-    //     this._handleLikeIcon();
-    //   });
     this._likeButton.addEventListener("click", () => {
       this._handleImageLike(this);
     });
-    // refactoring currently ^^^^^^
 
     //".card__delete-button";
     this._cardElement
@@ -53,13 +46,6 @@ export default class Card {
       console.log("like removed from set like status");
     }
   }
-
-  // _handleLikeIcon() {
-  //   this._cardElement
-  //     .querySelector(".card__like-button")
-  //     .classList.toggle("card__like-button_active");
-  // }
-  // refactoring currently ^^^^^^
 
   handleDeleteCard() {
     this._cardElement.remove();
