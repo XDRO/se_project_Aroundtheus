@@ -35,8 +35,8 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     );
     section.renderItems();
 
-    userInfo.setUserInfo(formData);
-    // userInfo.setAvatar(formData.avatar);
+    userInformation.setUserInfo(formData);
+    // userInformation.setAvatar(formData.avatar);
   })
   .catch((err) => {
     console.error(err);
@@ -95,11 +95,21 @@ const newCardPopup = new PopupWithForm(
 newCardPopup.setEventListeners();
 
 // edit popup form
-const userInfo = new UserInfo(".profile__title", ".profile__description");
-const popupEditForm = new PopupWithForm("#profile-edit-modal", (formData) => {
-  userInfo.setUserInfo(formData);
-  popupEditForm.close();
-});
+const userInformation = new UserInfo(
+  ".profile__title",
+  ".profile__description"
+  // "#profile-avatar"
+);
+
+const popupEditForm = new PopupWithForm(
+  "#profile-edit-modal",
+  ({ name, about }) => {
+    return api.editProfile({ name, about }).then((editProfile) => {
+      userInformation.setUserInfo(editProfile);
+      popupEditForm.close();
+    });
+  }
+);
 popupEditForm.setEventListeners();
 
 // popup with image
@@ -144,7 +154,7 @@ addFormValidator.enableValidation();
 
 //event listeners
 DOM.profileEditButton.addEventListener("click", () => {
-  const formData = userInfo.getUserInfo();
+  const formData = userInformation.getUserInfo();
   popupEditForm.setInputValues(formData);
   popupEditForm.open();
 });

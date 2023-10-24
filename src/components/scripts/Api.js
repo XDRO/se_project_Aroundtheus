@@ -55,7 +55,13 @@ export default class Api {
     }).then(this.renderResult);
   }
 
-  updateAvater() {}
+  editProfile({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      body: JSON.stringify({ name, about }),
+      headers: this._headers,
+    }).then(this.renderResult);
+  }
 
-  editProfile() {}
+  updateAvater() {}
 }
