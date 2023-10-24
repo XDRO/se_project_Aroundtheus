@@ -15,11 +15,13 @@ export default class Card {
   }
   _setEventListeners() {
     //".card__like-button"
-    this._cardElement
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => {
-        this._handleLikeIcon();
-      });
+    // this._cardElement
+    //   .querySelector(".card__like-button")
+    //   .addEventListener("click", () => {
+    //     this._handleLikeIcon();
+    //   });
+    // refactoring currently ^^^^^^
+
     //".card__delete-button";
     this._cardElement
       .querySelector(".card__delete-button")
@@ -33,25 +35,26 @@ export default class Card {
       });
   }
 
-  // setLikeStatus(isLiked) {
-  //   this.isLiked = isLiked;
-  //   this._renderLikes();
-  // }
-
-  // _renderLikes() {
-  //   if(this.isLiked) {
-  //     this._likeButton.classList.add("card__like-button_active")
-  //   } else {
-  //     this._likeButton.classList.remove("card__like-button_active");
-  //     console.log("like removed from set like status")
-  //   }
-  // }
-
-  _handleLikeIcon() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+  setLikeStatus(isLiked) {
+    this.isLiked = isLiked;
+    this._renderLikes();
   }
+
+  _renderLikes() {
+    if (this.isLiked) {
+      this._likeButton.classList.add("card__like-button_active");
+    } else {
+      this._likeButton.classList.remove("card__like-button_active");
+      console.log("like removed from set like status");
+    }
+  }
+
+  // _handleLikeIcon() {
+  //   this._cardElement
+  //     .querySelector(".card__like-button")
+  //     .classList.toggle("card__like-button_active");
+  // }
+  // refactoring currently ^^^^^^
 
   handleDeleteCard() {
     this._cardElement.remove();

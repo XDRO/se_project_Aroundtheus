@@ -182,6 +182,10 @@
   margin: 0px;
 }
 
+.modal__button-delete_save {
+  color: #fff;
+}
+
 @media only screen and (max-width: 471px) and (min-width: 0) {
   .modal__container {
     max-width: 282px;

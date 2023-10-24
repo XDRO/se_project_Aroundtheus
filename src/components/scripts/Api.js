@@ -41,11 +41,21 @@ export default class Api {
 
   renderError() {}
 
-  editProfile() {}
+  isLiked(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then(this.renderResult);
+  }
 
-  isLiked() {}
-
-  unlikeCard() {}
+  unlikeCard() {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this.renderResult);
+  }
 
   updateAvater() {}
+
+  editProfile() {}
 }

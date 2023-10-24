@@ -46,7 +46,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 function handleDeleteCardClick(item) {
   popupWithConfirmation.open();
   popupWithConfirmation.setSubmitCall(() => {
-    // popupWithConfirmation.deleteing(true);
+    popupWithConfirmation.deleteing(true);
     api
       .deleteCard(item.getId())
       .then(() => {
@@ -56,8 +56,18 @@ function handleDeleteCardClick(item) {
         console.log("Error:", err);
       });
     popupWithConfirmation.close();
-    // popupWithConfirmation.reset();
   });
+}
+
+function handleLikes(item) {
+  api
+    .isLiked(item.getId())
+    .then(() => {
+      item.isLiked();
+    })
+    .catch((err) => {
+      console.log("Error:", err);
+    });
 }
 
 const popupWithConfirmation = new ConfirmationOnClick({
