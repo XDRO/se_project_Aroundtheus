@@ -35,7 +35,6 @@ export default class Card {
 
   setLikeStatus(isLiked) {
     this.isLiked = isLiked;
-    console.log(this.isLiked);
     this._renderLikes();
   }
 
@@ -44,7 +43,6 @@ export default class Card {
       this._likeButton.classList.add("card__like-button_active");
     } else {
       this._likeButton.classList.remove("card__like-button_active");
-      console.log("like removed from set like status");
     }
   }
 

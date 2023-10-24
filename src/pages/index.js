@@ -65,7 +65,6 @@ function handleImageLike(item) {
     api
       .likeCard(item.getId())
       .then((respond) => {
-        console.log(respond);
         item.setLikeStatus(respond.isLiked);
       })
       .catch((err) => {
@@ -75,7 +74,6 @@ function handleImageLike(item) {
     api
       .unlikeCard(item.getId())
       .then((respond) => {
-        console.log(respond);
         item.setLikeStatus(respond.isLiked);
       })
       .catch((err) => {
