@@ -51,6 +51,7 @@ function handleDeleteCardClick(item) {
       .deleteCard(item.getId())
       .then(() => {
         item.handleDeleteCard();
+        popupWithConfirmation.deleting(false);
       })
       .catch((err) => {
         console.log("Error:", err);
