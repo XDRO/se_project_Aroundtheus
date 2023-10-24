@@ -46,7 +46,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 function handleDeleteCardClick(item) {
   popupWithConfirmation.open();
   popupWithConfirmation.setSubmitCall(() => {
-    popupWithConfirmation.deleteing(true);
+    popupWithConfirmation.deleting(true);
     api
       .deleteCard(item.getId())
       .then(() => {
