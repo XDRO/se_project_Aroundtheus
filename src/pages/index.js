@@ -60,15 +60,20 @@ function handleDeleteCardClick(item) {
   });
 }
 
-function handleLikes(item) {
-  api
-    .isLiked(item.getId())
-    .then(() => {
-      item.isLiked();
-    })
-    .catch((err) => {
-      console.log("Error:", err);
-    });
+function handleImageLike(item) {
+  const newLikeStatus = !item.isLiked;
+  if (newLikeStatus) {
+    api
+      .likeCard(item.getId())
+      .then((respond) => {
+        console.log(respond);
+        item.setLikeStatus(respond.isLiked);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
+  } else {
+  }
 }
 
 const popupWithConfirmation = new ConfirmationOnClick({
@@ -105,7 +110,8 @@ function createCard(item, _id) {
     item,
     "#card-template",
     handleImageClick,
-    handleDeleteCardClick
+    handleDeleteCardClick,
+    handleImageLike
   );
   return cardElement.getView();
 }

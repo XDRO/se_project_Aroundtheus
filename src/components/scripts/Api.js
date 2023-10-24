@@ -41,7 +41,7 @@ export default class Api {
 
   renderError() {}
 
-  isLiked(cardId) {
+  likeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
