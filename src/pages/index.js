@@ -104,19 +104,15 @@ const userInformation = new UserInfo(
 const popupEditForm = new PopupWithForm(
   "#profile-edit-modal",
   ({ name, about }) => {
+    popupEditForm.saving(true);
     return api.editProfile({ name, about }).then((editProfile) => {
+      popupEditForm.saving(false);
       userInformation.setUserInfo(editProfile);
       popupEditForm.close();
     });
   }
 );
 popupEditForm.setEventListeners();
-
-function handleEditFormSubmit(data) {
-  popupEditForm.setSubmitCall(() => {
-    popupEditForm.Saving(true);
-  });
-}
 
 // popup with image
 
@@ -133,14 +129,15 @@ function createCard(item, _id) {
     "#card-template",
     handleImageClick,
     handleDeleteCardClick,
-    handleImageLike,
-    handleEditFormSubmit
+    handleImageLike
   );
   return cardElement.getView();
 }
 
 function handleCardAddFormSubmit(data) {
+  newCardPopup.saving(true);
   api.postNewCard(data).then((card) => {
+    newCardPopup.saving(false);
     const cardInput = createCard(card);
     section.addItem(cardInput);
     newCardPopup.close();

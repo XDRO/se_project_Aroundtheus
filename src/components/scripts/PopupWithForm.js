@@ -32,7 +32,7 @@ export default class PopupWithForm extends Popup {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.Saving(true);
+    this.saving(true);
     this._handleFormSubmit(inputValue)
       .then(() => {
         this.close();
@@ -40,10 +40,10 @@ export default class PopupWithForm extends Popup {
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => this.Saving(false));
+      .finally(() => this.saving(false));
   }
 
-  Saving = (saving, savingText = "Saving...") => {
+  saving = (saving, savingText = "Saving...") => {
     if (saving) {
       this._popupFormText.textContent = savingText;
     } else {
@@ -52,11 +52,11 @@ export default class PopupWithForm extends Popup {
   };
 
   setEventListeners() {
+    super.setEventListeners();
     this._popupForm.addEventListener("submit", (e) => {
       e.preventDefault();
       this._handleFormSubmit(this._getInputValues());
     });
-    super.setEventListeners();
   }
 
   setSubmitCall(callback) {
