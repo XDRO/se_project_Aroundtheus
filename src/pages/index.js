@@ -90,7 +90,7 @@ popupWithConfirmation.setEventListeners();
 // popup with form
 const newCardPopup = new PopupWithForm(
   "#profile-add-modal",
-  handleCardFormSubmit
+  handleCardAddFormSubmit
 );
 newCardPopup.setEventListeners();
 
@@ -112,6 +112,12 @@ const popupEditForm = new PopupWithForm(
 );
 popupEditForm.setEventListeners();
 
+function handleEditFormSubmit(data) {
+  popupEditForm.setSubmitCall(() => {
+    popupEditForm.Saving(true);
+  });
+}
+
 // popup with image
 
 function handleImageClick(data) {
@@ -127,12 +133,13 @@ function createCard(item, _id) {
     "#card-template",
     handleImageClick,
     handleDeleteCardClick,
-    handleImageLike
+    handleImageLike,
+    handleEditFormSubmit
   );
   return cardElement.getView();
 }
 
-function handleCardFormSubmit(data) {
+function handleCardAddFormSubmit(data) {
   api.postNewCard(data).then((card) => {
     const cardInput = createCard(card);
     section.addItem(cardInput);
