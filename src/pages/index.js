@@ -19,6 +19,22 @@ const api = new Api({
   },
 });
 
+const userInformation = new UserInfo(
+  ".profile__title",
+  ".profile__description",
+  ".profile__pic"
+);
+
+const formValidators = {};
+const enableValidation = (validationSettings) => {
+  DOM.forms.forEach((formElement) => {
+    const validator = new FormValidation(validationSettings, formElement);
+    const formName = formElement.getAttribute("name");
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
 let section = 0;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
@@ -36,7 +52,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     section.renderItems();
 
     userInformation.setUserInfo(formData);
-    // userInformation.setAvatar(formData.avatar);
+    userInformation.setAvatar(formData.avatar);
   })
   .catch((err) => {
     console.error(err);
@@ -95,11 +111,6 @@ const newCardPopup = new PopupWithForm(
 newCardPopup.setEventListeners();
 
 // edit popup form
-const userInformation = new UserInfo(
-  ".profile__title",
-  ".profile__description"
-  // "#profile-avatar"
-);
 
 const popupEditForm = new PopupWithForm(
   "#profile-edit-modal",
@@ -144,17 +155,7 @@ function handleCardAddFormSubmit(data) {
   });
 }
 
-const editFormValidator = new FormValidation(
-  validationSettings,
-  DOM.profileEditForm
-);
-editFormValidator.enableValidation();
-
-const addFormValidator = new FormValidation(
-  validationSettings,
-  DOM.profileAddForm
-);
-addFormValidator.enableValidation();
+enableValidation(validationSettings);
 
 //event listeners
 DOM.profileEditButton.addEventListener("click", () => {
@@ -165,6 +166,20 @@ DOM.profileEditButton.addEventListener("click", () => {
 
 // add new card button
 DOM.profileAddButton.addEventListener("click", () => {
-  addFormValidator.toggleButtonState();
   newCardPopup.open();
+});
+
+// avatar image update button
+const popupAvatar = new PopupWithForm("#update-avatar-modal", (formData) => {
+  const avatar = formData.avatar;
+  return api.updateAvatar(avatar).then((updateAvatar) => {
+    userInformation.setAvatar(updateAvatar.avatar);
+  });
+});
+popupAvatar.setEventListeners();
+
+DOM.avatarImgButton.addEventListener("click", () => {
+  const formData = userInformation.getUserInfo();
+  formValidators["modal-avatar-form"].enableValidation();
+  popupAvatar.open();
 });

@@ -55,6 +55,14 @@ export default class Api {
     }).then(this.renderResult);
   }
 
+  updateAvatar(updateAvater) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ avatar: updateAvater }),
+    }).then(this.renderResult);
+  }
+
   editProfile({ name, about }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
@@ -62,6 +70,4 @@ export default class Api {
       headers: this._headers,
     }).then(this.renderResult);
   }
-
-  updateAvater() {}
 }

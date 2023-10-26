@@ -20,13 +20,10 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__pic"
-            src="<%=require('./images/jacques-cousteau(2x).jpg')%>"
-            alt="Avatar"
-          />
+          <img class="profile__pic" src="" alt="Avatar" />
+          <button class="profile__avatar-button" type="button"></button>
           <div class="profile__info">
-            <h1 class="profile__title" id="current-input">Jacques Cousteau</h1>
+            <h1 class="profile__title" id="current-input"></h1>
             <button
               class="profile__edit-button"
               id="profile-edit-button"
@@ -144,6 +141,40 @@
     </div>
 
     <!-- EDIT PROFILE AVATAR MODAL-->
+    <div class="modal" id="update-avatar-modal">
+      <div class="modal__container" id="modal__avatar-container">
+        <img class="modal__avatar-image" src="#" alt="" />
+        <button
+          class="modal__close modal__avatar-close"
+          id="avatar-image-close-modal"
+          type="button"
+        ></button>
+        <h3 class="modal__heading">Change profile Picture</h3>
+        <form
+          name="modal-avatar-form"
+          class="modal__form"
+          id="avatar-modal-form"
+        >
+          <label for="avatar-imageURL" class="modal__form-label"></label>
+          <input
+            type="URL"
+            name="avatar"
+            class="modal__input modal__input-avatar_URL"
+            id="avatar-imageURL"
+            placeholder="Image URL"
+            autocomplete="off"
+            required
+          />
+          <span class="modal__error" id="avatar-imageURL-error"></span>
+          <button
+            class="modal__button modal__button-submit modal__button_disabled"
+            id="modal-button-avatar"
+            type="submit"
+            disabled
+          ></button>
+        </form>
+      </div>
+    </div>
 
     <!-- CONFIRMATION MODAL-->
     <div class="modal" id="modal-delete-confirmation">
