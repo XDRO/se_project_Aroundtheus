@@ -171,9 +171,12 @@ DOM.profileAddButton.addEventListener("click", () => {
 
 // avatar image update button
 const popupAvatar = new PopupWithForm("#update-avatar-modal", (formData) => {
+  popupAvatar.saving(true);
   const avatar = formData.avatar;
   return api.updateAvatar(avatar).then((updateAvatar) => {
+    popupAvatar.saving(false);
     userInformation.setAvatar(updateAvatar.avatar);
+    popupAvatar.close();
   });
 });
 popupAvatar.setEventListeners();
