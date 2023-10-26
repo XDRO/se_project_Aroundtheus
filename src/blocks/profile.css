@@ -12,7 +12,27 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: 50% 50%;
-  margin-right: 24px;
+  /* margin-right: 24px; */
+  height: 120px;
+}
+
+.profile__avatar-button {
+  background: transparent url(../images/EditProfileAvatarPen.svg) center
+    no-repeat;
+  position: relative;
+  height: 26px;
+  width: 26px;
+  border: transparent;
+  right: 70px;
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+img:hover + .profile__avatar-button,
+.profile__avatar-button:hover {
+  visibility: visible;
+  cursor: pointer;
 }
 
 .profile__title {
