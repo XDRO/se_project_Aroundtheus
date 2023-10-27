@@ -35,6 +35,8 @@ const enableValidation = (validationSettings) => {
   });
 };
 
+enableValidation(validationSettings);
+
 let section = 0;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
@@ -71,7 +73,10 @@ function handleDeleteCardClick(item) {
       .then(popupWithConfirmation.close())
       .catch((err) => {
         console.log("Error:", err);
-      });
+      })
+      .finally(
+        document.getElementById("default-confirmation-button-text").textContent
+      );
   });
 }
 
@@ -125,7 +130,10 @@ const popupEditForm = new PopupWithForm(
       .then(popupEditForm.close())
       .catch((err) => {
         console.error("Error:", err);
-      });
+      })
+      .finally(
+        document.getElementById("default-avatar-button-text").textContent
+      );
   }
 );
 popupEditForm.setEventListeners();
@@ -162,10 +170,11 @@ function handleCardAddFormSubmit(data) {
     .then(newCardPopup.close())
     .catch((err) => {
       console.error("Error:", err);
-    });
+    })
+    .finally(
+      document.getElementById("default-addCard-button-text").textContent
+    );
 }
-
-enableValidation(validationSettings);
 
 //event listeners
 DOM.profileEditButton.addEventListener("click", () => {
@@ -192,15 +201,18 @@ const popupAvatar = new PopupWithForm("#update-avatar-modal", (formData) => {
     .then(popupAvatar.close())
     .catch((err) => {
       console.error("Error:", err);
-    });
+    })
+    .finally(document.getElementById("default-avatar-button-text").textContent);
 });
 popupAvatar.setEventListeners();
 
 DOM.avatarImgButton.addEventListener("click", () => {
-  const formData = userInformation.getUserInfo();
-  formValidators["modal-avatar-form"].enableValidation();
   popupAvatar.open();
 });
+
+// const formData = userInformation.getUserInfo();
+// formValidators["modal-avatar-form"].enableValidation();
+// REMOVED FROM THE CODE ABOVE ^^^^^ LINE 209 DOM.avatarImgButton
 
 // TRYING TO FIGURE OUT HOW TO MAKE THE DISABLE FEATURE ON ALL FORMS WORK EVEN AFTER THE FIRST SUBMIT
 // $("#user_input, #pass_input, #v_pass_input, #email").bind("keyup", function () {
