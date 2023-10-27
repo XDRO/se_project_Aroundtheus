@@ -7,7 +7,7 @@ import Section from "../components/scripts/Section.js";
 import * as DOM from "../utils/constants.js";
 import { validationSettings } from "../utils/utils.js";
 import Api from "../components/scripts/Api.js";
-import ConfirmationOnClick from "../components/scripts/popupWithConfirmation";
+import PopupWithConfirmation from "../components/scripts/PopupWithConfirmation.js";
 import "../pages/index.css";
 
 // Api
@@ -68,10 +68,10 @@ function handleDeleteCardClick(item) {
         item.handleDeleteCard();
         popupWithConfirmation.deleting(false);
       })
+      .then(popupWithConfirmation.close())
       .catch((err) => {
         console.log("Error:", err);
       });
-    popupWithConfirmation.close();
   });
 }
 
@@ -98,7 +98,7 @@ function handleImageLike(item) {
   }
 }
 
-const popupWithConfirmation = new ConfirmationOnClick({
+const popupWithConfirmation = new PopupWithConfirmation({
   popupSelector: "#modal-delete-confirmation",
 });
 popupWithConfirmation.setEventListeners();
@@ -116,11 +116,16 @@ const popupEditForm = new PopupWithForm(
   "#profile-edit-modal",
   ({ name, about }) => {
     popupEditForm.saving(true);
-    return api.editProfile({ name, about }).then((editProfile) => {
-      popupEditForm.saving(false);
-      userInformation.setUserInfo(editProfile);
-      popupEditForm.close();
-    });
+    return api
+      .editProfile({ name, about })
+      .then((editProfile) => {
+        popupEditForm.saving(false);
+        userInformation.setUserInfo(editProfile);
+      })
+      .then(popupEditForm.close())
+      .catch((err) => {
+        console.error("Error:", err);
+      });
   }
 );
 popupEditForm.setEventListeners();
@@ -147,12 +152,17 @@ function createCard(item, _id) {
 
 function handleCardAddFormSubmit(data) {
   newCardPopup.saving(true);
-  api.postNewCard(data).then((card) => {
-    newCardPopup.saving(false);
-    const cardInput = createCard(card);
-    section.addItem(cardInput);
-    newCardPopup.close();
-  });
+  api
+    .postNewCard(data)
+    .then((card) => {
+      newCardPopup.saving(false);
+      const cardInput = createCard(card);
+      section.addItem(cardInput);
+    })
+    .then(newCardPopup.close())
+    .catch((err) => {
+      console.error("Error:", err);
+    });
 }
 
 enableValidation(validationSettings);
@@ -173,11 +183,16 @@ DOM.profileAddButton.addEventListener("click", () => {
 const popupAvatar = new PopupWithForm("#update-avatar-modal", (formData) => {
   popupAvatar.saving(true);
   const avatar = formData.avatar;
-  return api.updateAvatar(avatar).then((updateAvatar) => {
-    popupAvatar.saving(false);
-    userInformation.setAvatar(updateAvatar.avatar);
-    popupAvatar.close();
-  });
+  return api
+    .updateAvatar(avatar)
+    .then((updateAvatar) => {
+      popupAvatar.saving(false);
+      userInformation.setAvatar(updateAvatar.avatar);
+    })
+    .then(popupAvatar.close())
+    .catch((err) => {
+      console.error("Error:", err);
+    });
 });
 popupAvatar.setEventListeners();
 
@@ -186,3 +201,16 @@ DOM.avatarImgButton.addEventListener("click", () => {
   formValidators["modal-avatar-form"].enableValidation();
   popupAvatar.open();
 });
+
+// TRYING TO FIGURE OUT HOW TO MAKE THE DISABLE FEATURE ON ALL FORMS WORK EVEN AFTER THE FIRST SUBMIT
+// $("#user_input, #pass_input, #v_pass_input, #email").bind("keyup", function () {
+//   if (allFilled()) $("#register").removeAttr("disabled");
+// });
+
+// function allFilled() {
+//   var filled = true;
+//   $("body input").each(function () {
+//     if ($(this).val() == "") filled = false;
+//   });
+//   return filled;
+// }

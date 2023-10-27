@@ -37,10 +37,10 @@ export default class PopupWithForm extends Popup {
       .then(() => {
         this.close();
       })
+      .finally(() => this.saving(false))
       .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => this.saving(false));
+        console.log("Error:", err);
+      });
   }
 
   saving = (saving, savingText = "Saving...") => {
