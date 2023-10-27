@@ -139,10 +139,9 @@ const popupEditForm = new PopupWithForm(
 popupEditForm.setEventListeners();
 
 // popup with image
-
+const popupImage = new PopupWithImage("#preview-image-modal");
+popupImage.setEventListeners();
 function handleImageClick(data) {
-  const popupImage = new PopupWithImage("#preview-image-modal");
-  popupImage.setEventListeners();
   popupImage.open(data);
 }
 // functions
@@ -185,6 +184,7 @@ DOM.profileEditButton.addEventListener("click", () => {
 
 // add new card button
 DOM.profileAddButton.addEventListener("click", () => {
+  formValidators["add-card-form"].toggleButtonState();
   newCardPopup.open();
 });
 
@@ -207,11 +207,10 @@ const popupAvatar = new PopupWithForm("#update-avatar-modal", (formData) => {
 popupAvatar.setEventListeners();
 
 DOM.avatarImgButton.addEventListener("click", () => {
+  formValidators["modal-avatar-form"].toggleButtonState();
   popupAvatar.open();
 });
 
-// const formData = userInformation.getUserInfo();
-// formValidators["modal-avatar-form"].enableValidation();
 // REMOVED FROM THE CODE ABOVE ^^^^^ LINE 209 DOM.avatarImgButton
 
 // TRYING TO FIGURE OUT HOW TO MAKE THE DISABLE FEATURE ON ALL FORMS WORK EVEN AFTER THE FIRST SUBMIT

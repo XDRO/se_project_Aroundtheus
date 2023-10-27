@@ -50,7 +50,12 @@
       <div class="modal__container">
         <button class="modal__close"></button>
         <p class="modal__heading">Edit profile</p>
-        <form action="#" class="modal__form js-modal-form" id="edit-card-form">
+        <form
+          action="#"
+          class="modal__form js-modal-form"
+          id="edit-card-form"
+          name="edit-profile-form"
+        >
           <input
             class="modal__input"
             type="text"
@@ -90,7 +95,7 @@
       <div class="modal__container">
         <button class="modal__close"></button>
         <p class="modal__heading">New Place</p>
-        <form action="#" class="modal__form js-modal-form">
+        <form action="#" class="modal__form js-modal-form" name="add-card-form">
           <input
             class="modal__input modal__input_type_title"
             type="text"
@@ -156,6 +161,7 @@
           name="modal-avatar-form"
           class="modal__form"
           id="avatar-modal-form"
+          name="edit-profile-avatar-form"
         >
           <label for="avatar-imageURL" class="modal__form-label"></label>
           <input
@@ -187,7 +193,7 @@
       <div class="modal__container modal__delete-container">
         <button class="modal__close modal__close-button_delete-form"></button>
         <p class="modal__heading modal__heading-confirmation">Are you sure?</p>
-        <form class="modal__form js-modal-form">
+        <form class="modal__form js-modal-form" name="confirmation-form">
           <button
             class="modal__button modal__button-delete_save"
             type="submit"
