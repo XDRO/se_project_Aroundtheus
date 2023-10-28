@@ -37,7 +37,7 @@ const enableValidation = (validationSettings) => {
 
 enableValidation(validationSettings);
 
-let section = 0;
+let section;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cardData, formData]) => {
