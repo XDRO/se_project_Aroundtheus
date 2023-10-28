@@ -37,7 +37,7 @@ const enableValidation = (validationSettings) => {
 
 enableValidation(validationSettings);
 
-let section = 0;
+let section;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cardData, formData]) => {
@@ -210,18 +210,3 @@ DOM.avatarImgButton.addEventListener("click", () => {
   formValidators["modal-avatar-form"].toggleButtonState();
   popupAvatar.open();
 });
-
-// REMOVED FROM THE CODE ABOVE ^^^^^ LINE 209 DOM.avatarImgButton
-
-// TRYING TO FIGURE OUT HOW TO MAKE THE DISABLE FEATURE ON ALL FORMS WORK EVEN AFTER THE FIRST SUBMIT
-// $("#user_input, #pass_input, #v_pass_input, #email").bind("keyup", function () {
-//   if (allFilled()) $("#register").removeAttr("disabled");
-// });
-
-// function allFilled() {
-//   var filled = true;
-//   $("body input").each(function () {
-//     if ($(this).val() == "") filled = false;
-//   });
-//   return filled;
-// }
