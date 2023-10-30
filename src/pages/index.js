@@ -70,7 +70,7 @@ function handleDeleteCardClick(item) {
         item.handleDeleteCard();
         popupWithConfirmation.deleting(false);
       })
-      .then(popupWithConfirmation.close())
+      .then(() => popupWithConfirmation.close())
       .catch((err) => {
         console.log("Error:", err);
       })
@@ -127,7 +127,7 @@ const popupEditForm = new PopupWithForm(
         popupEditForm.saving(false);
         userInformation.setUserInfo(editProfile);
       })
-      .then(popupEditForm.close())
+      .then(() => popupEditForm.close())
       .catch((err) => {
         console.error("Error:", err);
       })
@@ -166,7 +166,7 @@ function handleCardAddFormSubmit(data) {
       const cardInput = createCard(card);
       section.addItem(cardInput);
     })
-    .then(newCardPopup.close())
+    .then(() => newCardPopup.close())
     .catch((err) => {
       console.error("Error:", err);
     })
@@ -198,7 +198,7 @@ const popupAvatar = new PopupWithForm("#update-avatar-modal", (formData) => {
       popupAvatar.saving(false);
       userInformation.setAvatar(updateAvatar.avatar);
     })
-    .then(popupAvatar.close())
+    .then(() => popupAvatar.close())
     .catch((err) => {
       console.error("Error:", err);
     })
