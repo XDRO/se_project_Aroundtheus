@@ -68,15 +68,12 @@ function handleDeleteCardClick(item) {
       .deleteCard(item.getId())
       .then(() => {
         item.handleDeleteCard();
-        popupWithConfirmation.deleting(false);
       })
       .then(() => popupWithConfirmation.close())
       .catch((err) => {
         console.log("Error:", err);
-      });
-    // .finally(
-    // document.getElementById("default-confirmation-button-text").textContent
-    // );
+      })
+      .finally(() => popupWithConfirmation.deleting(false));
   });
 }
 
@@ -124,16 +121,13 @@ const popupEditForm = new PopupWithForm(
     return api
       .editProfile({ name, about })
       .then((editProfile) => {
-        popupEditForm.saving(false);
         userInformation.setUserInfo(editProfile);
       })
       .then(() => popupEditForm.close())
       .catch((err) => {
         console.error("Error:", err);
-      });
-    // .finally(
-    // document.getElementById("default-avatar-button-text").textContent
-    // );
+      })
+      .finally(() => popupEditForm.saving(false));
   }
 );
 popupEditForm.setEventListeners();
@@ -162,17 +156,14 @@ function handleCardAddFormSubmit(data) {
   api
     .postNewCard(data)
     .then((card) => {
-      newCardPopup.saving(false);
       const cardInput = createCard(card);
       section.addItem(cardInput);
     })
     .then(() => newCardPopup.close())
     .catch((err) => {
       console.error("Error:", err);
-    });
-  // .finally(
-  // document.getElementById("default-addCard-button-text").textContent
-  // );
+    })
+    .finally(() => newCardPopup.saving(false));
 }
 
 //event listeners
@@ -195,14 +186,13 @@ const popupAvatar = new PopupWithForm("#update-avatar-modal", (formData) => {
   return api
     .updateAvatar(avatar)
     .then((updateAvatar) => {
-      popupAvatar.saving(false);
       userInformation.setAvatar(updateAvatar.avatar);
     })
     .then(() => popupAvatar.close())
     .catch((err) => {
       console.error("Error:", err);
-    });
-  // .finally(document.getElementById("default-avatar-button-text").textContent);
+    })
+    .finally(() => popupAvatar.saving(false));
 });
 popupAvatar.setEventListeners();
 
