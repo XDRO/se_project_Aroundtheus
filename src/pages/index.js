@@ -73,10 +73,10 @@ function handleDeleteCardClick(item) {
       .then(() => popupWithConfirmation.close())
       .catch((err) => {
         console.log("Error:", err);
-      })
-      .finally(
-        document.getElementById("default-confirmation-button-text").textContent
-      );
+      });
+    // .finally(
+    // document.getElementById("default-confirmation-button-text").textContent
+    // );
   });
 }
 
@@ -130,10 +130,10 @@ const popupEditForm = new PopupWithForm(
       .then(() => popupEditForm.close())
       .catch((err) => {
         console.error("Error:", err);
-      })
-      .finally(
-        document.getElementById("default-avatar-button-text").textContent
-      );
+      });
+    // .finally(
+    // document.getElementById("default-avatar-button-text").textContent
+    // );
   }
 );
 popupEditForm.setEventListeners();
@@ -169,10 +169,10 @@ function handleCardAddFormSubmit(data) {
     .then(() => newCardPopup.close())
     .catch((err) => {
       console.error("Error:", err);
-    })
-    .finally(
-      document.getElementById("default-addCard-button-text").textContent
-    );
+    });
+  // .finally(
+  // document.getElementById("default-addCard-button-text").textContent
+  // );
 }
 
 //event listeners
@@ -201,8 +201,8 @@ const popupAvatar = new PopupWithForm("#update-avatar-modal", (formData) => {
     .then(() => popupAvatar.close())
     .catch((err) => {
       console.error("Error:", err);
-    })
-    .finally(document.getElementById("default-avatar-button-text").textContent);
+    });
+  // .finally(document.getElementById("default-avatar-button-text").textContent);
 });
 popupAvatar.setEventListeners();
 
