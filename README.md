@@ -3,7 +3,7 @@ Project name: Around the U.S.
 Description - This project is my first responsive design project at Tripleten. It is about Jacques Cousteu, possibly a made up name I'm not sure. He is apparently some sort of explorer that likes to take photographs, so probably a photographer, and he journey's to a varity of places, which you can see on this website/page. The functionality of this project is that it reponds well to several different resoultion platforms, i.e. mobile, tablets, and desktop.
 If you open device tools then you will see that it renders correctly or doesn't break at least on 320px, 470px, 800px, and 1280px and above.
 
-Description of technologies used - HTML, CSS
+Description of technologies used - HTML, CSS, JavaScript
 
 Description of techniques used - CSS Grid, FLex-box, Psuedo classes, Buttons, Min-Max, :root, --size-divisor, calc(#px / var(--size-divisor))
 
@@ -33,4 +33,4 @@ Screen shots -
 ![Screenshot 2023-08-11 160024](https://github.com/XDRO/se_project_aroundtheus/assets/131299160/9cbd016f-153b-43f0-b405-31848e7d1d0f)
 )
 
-[Git hub link]([https://github.com/XDRO/se_project_aroundtheus/blob/main/se_project_aroundtheus/README.md](https://xdro.github.io/se_project_aroundtheus/)https://xdro.github.io/se_project_aroundtheus/)
+[Git hub link](https://xdro.github.io/se_project_aroundtheus/)
